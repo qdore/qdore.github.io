@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>文件系统库 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="文件系统库"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:27.000Z"><a href="/2014/04/14/文件系统库/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">文件系统库</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <html><head><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><title>文件系统库</title><br><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{<br><br><br>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style><br></head><body><font face="Menlo"><span style="font-size: 14px;">class<span style="-evernote-last-insertion-point:true;"> path{<font color="#FF2600">&lt;boost/filesystem.hpp&gt; namespace boost::filesystem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//需链接libboost_filesystem,system或libboost_all</font></span></span></font><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path(string&amp; s);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path(path&amp; p);&nbsp;</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path(InputIterator begin,InputIterator end);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path&amp; operator= /= += + &lt;&lt; /(path&amp; path); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // path /= &quot;etc&quot; &nbsp;等价于</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path&amp; operator= /= += + &lt;&lt; /(string&amp; str); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;// path += &quot;/etc&quot;</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;string string(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//获取路径名为字符串</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;value_type<em> c_str();</font></span></div><div><span style="font-family: Menlo; font-size: 14px;">&nbsp; &nbsp; &nbsp;string_type&amp; native();</span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;wstring wstring();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;void clear();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path&amp; remove_filename();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path&amp; replace_extention();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;void swap(path&amp; path);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path root_name(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//根名称</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path root_directory(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //根目录</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path root_path(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//根路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path relative_path(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//相对路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path parent_path(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//上级路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path filename(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //文件名</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path stem(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //全路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;path extension(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//扩展名</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;bool empty(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//是否空路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;bool is_absolute(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//是否是绝对路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;bool is_relative(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//是否是相对路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;bool has_root_name();<br/>&nbsp; &nbsp; &nbsp;bool has_root_directory();<br/>&nbsp; &nbsp; &nbsp;bool has_root_path();<br/>&nbsp; &nbsp; &nbsp;bool has_relative_path();<br/>&nbsp; &nbsp; &nbsp;bool has_parent_path();&nbsp;<br/>&nbsp; &nbsp; &nbsp;bool has_filename();<br/>&nbsp; &nbsp; &nbsp;bool has_stem();<br/>&nbsp; &nbsp; &nbsp;bool has_extension();<br/></font></span></div></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;iterator begin();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;iterator end();</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">}</font></span><hr/><span style="font-size: 14px;"><font face="Menlo">class status{</font></span><span style="color: rgb(255, 38, 0); font-family: Menlo; font-size: 14px;">&lt;boost/filesystem.hpp&gt; namespace boost::filesystem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //需链接libboost_filesystem,</span><span style="color: rgb(255, 38, 0); font-family: Menlo; font-size: 14px;">system或libboost_all</span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;status(path&amp; path，perms per=perms_not_know);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;file_type type(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//获取文件类型和设置文件类型</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;void type(file_type type);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;perms permissions(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //获取文件权限和设置文件权限</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">&nbsp; &nbsp; &nbsp;void permissions(perms&amp; prms);</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">}</font></span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-size: 14px;"><font face="Menlo">status_error &nbsp; &nbsp; : &nbsp; &nbsp; 获取文件类型出错</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">file not found &nbsp; : &nbsp; &nbsp; 文件不存在</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">status_unknown &nbsp; : &nbsp; &nbsp; 文件存在但状态未知</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">regular_file &nbsp; &nbsp; : &nbsp; &nbsp; 是一个普通文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">directory_file &nbsp; : &nbsp; &nbsp; 是一个目录</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">symlink_file &nbsp; &nbsp; : &nbsp; &nbsp; 是一个链接文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">block_file &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; 是一个块设备文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">character_file &nbsp; : &nbsp; &nbsp; 是一个字符设备文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">fifo_file &nbsp; &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp; 是一个管道设备文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">socket_file &nbsp; &nbsp; &nbsp;: &nbsp; &nbsp; 是一个socket设备文件</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">type_unknown &nbsp; &nbsp; : &nbsp; &nbsp; 文件的类型未知</font></span></div><div><hr/><span style="font-size: 14px;"><font face="Menlo">path initial_path(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//初始路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">path current_path(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//当前路径</font></span></div><div><span style="font-size: 14px;"><font face="Menlo">unsigned int file_size(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//文件大小</font></span></div><div><font face="Menlo"><span style="font-size: 14px;">time_t last_write_time(path&amp; p,time_t=0); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //修改时间或更新修改时间</span></font></div><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><div><font face="Menlo"><span style="font-size: 14px;">bool create_directory(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //创建文件夹</span></font></div><div><font face="Menlo"><span style="font-size: 14px;">bool&nbsp;</span></font><span style="font-family: Menlo; font-size: 14px;">create_directorys(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//递归创建文件夹</span></div><div><span style="font-family: Menlo; font-size: 14px;">bool exists(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //是否存在</span></div><div><span style="font-family: Menlo; font-size: 14px;">bool rename(path&amp; p1,path&amp; p2); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //重命名</span></div><div><span style="font-family: Menlo; font-size: 14px;">bool copy_file</span><span style="font-family: Menlo; font-size: 14px;">(path&amp; p1,path&amp; p2); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//复制文件</span></div><div><span style="font-family: Menlo; font-size: 14px;">bool remove(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //删除</span></div><div><span style="font-family: Menlo; font-size: 14px;">bool remove_all(path&amp; p); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //递归删除</span></div><div><font face="Menlo"><span style="font-size: 14px;">bool creat_symlink(</span></font><span style="font-family: Menlo; font-size: 14px;">path&amp; p1,path&amp; p2); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//创建符号链接</span><hr/><span style="font-family: Menlo; font-size: 14px;">directory_iterator end; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //迭代器返回的对象是directory_entry</span></div><div><font face="Menlo"><span style="font-size: 14px;">for(directory_iterator pos(path&amp; p);pos!=end;pos++){ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//它的成员函数有path()和status()分别返回路径和状态</span></font></div><div><font face="Menlo"><span style="font-size: 14px;">&nbsp; &nbsp; &nbsp;cout&lt;&lt;(pos-&gt;path())&lt;&lt;endl;</span></font></div><div><font face="Menlo"><span style="font-size: 14px;">}</span></font></div><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><div><font face="Menlo"><span style="font-size: 14px;">recursive_directory_iterator end;</span></font></div><div><font face="Menlo"><span style="font-size: 14px;">for(</span></font><span style="font-family: Menlo; font-size: 14px;">recursive_directory_iterator</span><span style="font-family: Menlo; font-size: 14px;">&nbsp;pos(path&amp; p);pos!=end;pos++</span><span style="font-size: 14px; font-family: Menlo;">){</span></div><div><span style="font-size: 14px; font-family: Menlo;">&nbsp; &nbsp; &nbsp;if(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">is_directory</span><span style="font-size: 14px; font-family: Menlo;">(</em>pos)</span><span style="font-family: Menlo; font-size: 14px;">)&nbsp;</span><span style="font-size: 14px; font-family: Menlo;">pos.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">no_push</span><span style="font-size: 14px; font-family: Menlo;">();</span><span style="font-family: Menlo; font-size: 14px;">; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//这句作用使得和上面的广度遍历一样</span></div><div><span style="font-size: 14px; font-family: Menlo;">&nbsp; &nbsp; &nbsp;cout&lt;&lt;pos.level()&lt;&lt;&quot;:&quot;&lt;&lt;(pos-&gt;path)&lt;&lt;endl;</span></div><div><span style="font-size: 14px; font-family: Menlo;">}</span></div><div><span style="font-size: 14px;"><font face="Menlo"><br/></font></span></div><div><span style="font-family: Menlo; font-size: 14px;">class recursive_directory_iterator{</span></div><div><span style="font-family: Menlo; font-size: 14px;">&nbsp; &nbsp; &nbsp;int level(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//返回目录的深度</span></div><div><span style="font-family: Menlo; font-size: 14px;">&nbsp; &nbsp; &nbsp;void pop(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //退出当前目录的遍历</span></div><div><span style="font-family: Menlo; font-size: 14px;">&nbsp; &nbsp; &nbsp;void no_push(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //不遍历本目录</span></div><div><span style="font-family: Menlo; font-size: 14px;">}</span></div></body></html>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/boost/">boost</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/boost/">boost</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

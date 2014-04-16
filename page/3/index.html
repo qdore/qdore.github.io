@@ -1,0 +1,779 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 3 页 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/SQL pro-c-c++编程 游标 指示变量/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/SQL pro-c-c++编程 游标 指示变量/">SQL pro-c-c++编程 游标 指示变量</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>SQL pro<em>c/c++编程 游标 指示变量</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px;"><span style="-evernote-last-insertion-point:true;"/>pro</em>c程序结构：</span><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">#include &lt;sqlca.h&gt;</span></div><br><div><span style="font-size: 14px;">#include &lt;oci&gt; </span></div><br><div><span style="font-size: 14px;">     …</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">exec sql begin declare section;                                                                                      //声明区</span></div><br><div><span style="font-size: 14px;">     short id_indict;</span></div><br><div><span style="font-size: 14px;">     short name_indict</span></div><br><div><span style="font-size: 14px;">     char <em>account=&quot;用户名/密码@服务名&quot;;<br/></span></div><br><div><span style="font-size: 14px;">     …</span></div><br><div><span style="font-size: 14px;">exec sql end declare section;</span></div><br><div><span style="font-size: 14px;">long SQLCODE;char err[50];                                                                                          //C++方式<br/></span><br><div><span style="font-size: 14px;">int main</span></div><br><div><span style="font-size: 14px;">{</span></div><br><div><span style="font-size: 14px;">     /</em>异常跳转： </span></div><br><div><span style="font-size: 14px;">          EXEC SQL WHENEVER SQLERROR DO handle()/break;                                          //异常跳转handle函数</span></div><br><div><span style="font-size: 14px;">          EXEC SQL WHENEVER SQLWARNING CONTINUE;                                                //异常跳转-&gt;继续下一句</span></div><br><div><span style="font-size: 14px;">          EXEC SQL WHENEVER NOT FOUND GOTO ??;                                                      //找不到记录时跳转到标签</span></div><br><div><span style="font-size: 14px;">          EXEC SQL WHENEVER SQLERROR STOP;                                                            //回滚事务停止执行</span></div><br><div><span style="font-size: 14px;">     <em>/</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     exec sql connect account;                                                                                          //C变量使用在sql中必须加冒号</span></div><br><div><span style="font-size: 14px;">     if(sqlca.sqlcode!=0) printf(&quot;connect error!\n&quot;) exit(-1);                                                //C方式</span></div><br><div><span style="font-size: 14px;">     if(SQLCODE!=0) {</span></div><br><div><span style="font-size: 14px;">          </span></div><br><div><span style="font-size: 14px;">     }</span></div><br><div><span style="font-size: 14px;">          …</span></div><br><div><span style="font-size: 14px;">     exec sql select id,name into :id:id_indict,:name:name_indict from table;                   //select 加into放入变量中,可以是结构体也可以是数组,id_indict,name_indict为指示变量</span></div><br><div><span style="font-size: 14px;">     </span></div><br><span style="font-size: 14px;">     /</em>报错：</span></div><br><div><span style="font-size: 14px;">          if(sqlca.sqlcode&lt;=0) {                                                                                            //C方式报错</span></div><br><div><span style="font-size: 14px;">               sqlca.sqlerrm.sqlerrmc[sqlca.sqlerrm.sqlerrml]=0;     </span></div><br><div><br><div><span style="font-size: 14px;">               printf(&quot;query failed:%s!\n&quot;,sqlca.sqlerrm.sqlerrmc);</span></div><br><div><span style="font-size: 14px;">          }</span></div><br><div><span style="font-size: 14px;">          if(sqlca.sqlcode&lt;=0) {                                                                                            //C++方式报错</span></div><br><div><span style="font-size: 14px;">               sqlglm(err,&amp;len,&amp;len);</span></div><br><div><span style="font-size: 14px;">               err[len]=0;</span></div><br><div><span style="font-size: 14px;">               printf(&quot;%s\n&quot;,err);</span></div><br><div><span style="font-size: 14px;">               exit(-1);</span></div><br><div><span style="font-size: 14px;">          }</span></div><br></div><br><div><span style="font-size: 14px;">     <em>/</span></div><br><div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     exec sql commit release;</span></div><br><div><span style="font-size: 14px;">}</span></div><br></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">指示变量：sqlca/oraca</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><span style="font-size: 14px;">0       操作成功</span><br><div><span style="font-size: 14px;">-1      该指示变量对应的宿主变量返回了或插入、更新成了NULL 值</span></div><br><div><span style="font-size: 14px;">-2      从数据库存放数据到对应的宿主变量时，数据超长，并且不能推断出截断了多少字节的长度</span></div><br><div><span style="font-size: 14px;">&gt;0     在FETHC 或SELECT 语句时，因数据超长而被截断存放在了对应的宿主变量中，指示变量存放对应列的长度</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">编译： </span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><span style="font-size: 14px;">proc pc文件名            <br/></span><br><div><span style="font-size: 14px;">gcc  pc文件名.c -I${ORACLE_HOME}/precomp/public  -L ${ORACLE_HOME}/lib -l clntsh </span></div><br><div><span style="font-size: 14px;">————————————————————————————————————————————————————————</span></div><br><div><span style="font-size: 14px;">proc pc文件名 oname=pc文件名.cpp code=cpp mode=ansi parse=none</span></div><br><div><span style="font-size: 14px;">g++  pc文件名.cpp -I${ORACLE_HOME}/precomp/public -I${ORACLE_HOME}/rdbms/public -I${ORACLE_HOME}/rdbms/demo   -L ${ORACLE_HOME}/lib -l clntsh<br/></span></div><br><div><br><hr/></div><br><span style="font-size: 14px;">/</em>游标的使用:滚动游标<em>/</span><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">/</em></span></div><br><div><span style="font-size: 14px;">     1.定义滚动游标:EXEC SQL DECLARE 游标名 SCROLL CURSOR FOR SELECT 子句;</span></div><br><div><span style="font-size: 14px;">     2.打开游标</span></div><br><div><span style="font-size: 14px;">     3.提取游标数据</span></div><br><div><span style="font-size: 14px;">     4.关闭游标</span></div><br><div><span style="font-size: 14px;"><em>/</span></div><br><div><span style="font-size: 14px;">/</em></span></div><br><div><span style="font-size: 14px;">提取游标数据可以滚动提取</span></div><br><div><span style="font-size: 14px;">     1.FETCH FIRST</span></div><br><div><span style="font-size: 14px;">     2.FETCH PRIOR</span></div><br><div><span style="font-size: 14px;">     3.FETCH NEXT</span></div><br><div><span style="font-size: 14px;">     4.FETCH LAST</span></div><br><div><span style="font-size: 14px;">     5.FETCH CURRENT</span></div><br><div><span style="font-size: 14px;">     6.FETCH RELATIVE n</span></div><br><div><span style="font-size: 14px;">     7.FETCH ABSOLUTE n</span></div><br><div><span style="font-size: 14px;"><em>/</span></div><br><div><span style="font-size: 14px;">/</em></span></div><br><div><span style="font-size: 14px;">游标不是宿主变量</span></div><br><div><span style="font-size: 14px;"><em>/</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">#include &lt;sqlca.h&gt;</span></div><br><div><span style="font-size: 14px;">#include &lt;stdio.h&gt;</span></div><br><div><span style="font-size: 14px;">#include &lt;oci.h&gt;</span></div><br><div><span style="font-size: 14px;">#include &lt;sql2oci.h&gt;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">EXEC SQL BEGIN DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;">     char </em>username=&quot;scott&quot;;</span></div><br><div><span style="font-size: 14px;">     char <em>password=&quot;tiger&quot;;</span></div><br><div><span style="font-size: 14px;">EXEC SQL END   DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">void sqlerror()</span></div><br><div><span style="font-size: 14px;">{</span></div><br><div><span style="font-size: 14px;">     printf(&quot;错误描述:%s!\n&quot;,sqlca.sqlerrm.sqlerrmc);</span></div><br><div><span style="font-size: 14px;">}</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">int main()</span></div><br><div><span style="font-size: 14px;">{</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     EXEC SQL WHENEVER SQLERROR DO sqlerror();</span></div><br><div><span style="font-size: 14px;">     /</em>连接服务<em>/</span></div><br><div><span style="font-size: 14px;">     EXEC SQL BEGIN DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;">     char </em>service=&quot;tarena&quot;;</span></div><br><div><span style="font-size: 14px;">     EXEC SQL END   DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;">     EXEC SQL CONNECT :username  IDENTIFIED BY :password USING :service;</span></div><br><div><span style="font-size: 14px;">    </span></div><br><div><span style="font-size: 14px;">     /<em>定义游标</em>/    </span></div><br><div><span style="font-size: 14px;">     EXEC SQL DECLARE emp_cur SCROLL CURSOR FOR</span></div><br><div><span style="font-size: 14px;">     SELECT empno,ename,sal,comm FROM emp;</span></div><br><div><span style="font-size: 14px;">     /<em>打开游标</em>/</span></div><br><div><span style="font-size: 14px;">     EXEC SQL OPEN emp_cur;</span></div><br><div><span style="font-size: 14px;">     /<em>提取游标数据</em>/</span></div><br><div><span style="font-size: 14px;">     EXEC SQL BEGIN DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;">     int empno=0;</span></div><br><div><span style="font-size: 14px;">     varchar ename[20];</span></div><br><div><span style="font-size: 14px;">     float sal=0;</span></div><br><div><span style="font-size: 14px;">     float comm=0;    </span></div><br><div><span style="font-size: 14px;">     short icomm;</span></div><br><div><span style="font-size: 14px;">     EXEC SQL END   DECLARE SECTION;</span></div><br><div><span style="font-size: 14px;">    </span></div><br><div><span style="font-size: 14px;">     /<em>FETCH 一次游标指针指向下一行数据，处理的行数保存在sqlca.sqlerrd[2]中</em>/</span></div><br><div><span style="font-size: 14px;">     /<em>所以可以使用循环读取所有数据，读取结束可以使用WHENEVER处理</em>/</span></div><br><div><span style="font-size: 14px;">     EXEC SQL WHENEVER NOT FOUND DO break;</span></div><br><div><span style="font-size: 14px;">     printf(&quot;================\n&quot;);</span></div><br><div><span style="font-size: 14px;">     while(1)</span></div><br><div><span style="font-size: 14px;">     {</span></div><br><div><span style="font-size: 14px;">          EXEC SQL FETCH NEXT emp_cur INTO :empno,:ename,:sal,:comm:icomm;</span></div><br><div><span style="font-size: 14px;">          ename.arr[ename.len]=0;</span></div><br><div><span style="font-size: 14px;">          printf(&quot;%d:%d,%s,%f,%f\n&quot;,sqlca.sqlerrd[2],empno,ename.arr,sal,comm);</span></div><br><div><span style="font-size: 14px;">     }</span></div><br><div><span style="font-size: 14px;">     printf(&quot;================\n&quot;);</span></div><br><div><span style="font-size: 14px;">     /<em>关闭游标</em>/</span></div><br><div><span style="font-size: 14px;">     EXEC SQL CLOSE emp_cur;</span></div><br><div><span style="font-size: 14px;">}</span><br><hr/><br><span style="font-size: 14px;"><span style="color: rgb(51, 51, 51); line-height: 26px; text-align: left;">SQLCA的组成</span></span></div><br><p style="color: rgb(51, 51, 51); line-height: 26px; text-align: left;"><span style="font-size: 14px;">    PRO<em>C程序中的SQLCA时C语言中的一个结构变量, 组成为:<br/><br>    struct sqlca <br/><br>    {<br/><br>        char sqlcaid[8];<br/><br>        long sqlcabc;<br/><br>        long sqlcode;<br/><br>        struct <br/><br>        {<br/><br>            unsigned short sqlerrml;<br/><br>            char sqlerrmc[70];<br/><br>        } sqlerrm;<br/><br>        char sqlerrp[8];<br/><br>        long sqlerrd[6];<br/><br>        char sqlwarn[8];<br/><br>        char sqlext[8];<br/><br>    };<br/><br>    struct sqlca sqlca;</span></p><br><p style="color: rgb(51, 51, 51); line-height: 26px; text-align: left;"><span style="font-size: 14px;">sqlcaid: 字符串字段, 被初始为sqlca, 用于标识SQL通信区。<br/><br>sqlabc: 整型字段, 用于保留SQL通信区的字节长度。<br/><br>sqlcode: 整型字段, 用于保留最近执行的SQL语句的状态:<br/><br>    = 0  表示该SQL语句执行成功, 没有发生错误和异常。<br/><br>    &gt; 0  表示执行了该SQL语句, 但有一异常。<br/><br>    &lt; 0  表示由于DB、系统、网络或程序有错误, ORACLE 未执行该语句。如出现这类错误, 当前事务一般回退。<br/><br>sqlerrm: 是个子结构, 含有两个元素。<br/><br>    sqlerrmc: 字符串字段, 保存与sqlcode对应的正文, 用SQLGLM()函数引用。当sqlcode &lt; 0时, 该正文表示当前SQL的执行情况; 如sqlcode = 0时, 该正文表示前面SQL的执行情况。<br/><br>    sqlerrml: 整字段, 上述正文长度。<br/><br>sqlerrd: 长整数组, 6个元素, 用了2个。<br/><br>    sqlerrd[2]: 保存当前SQL语句处理的行数。但若当前SQL失败, 则无定义; 若在数组操作中出错, 则停于出错行, 这时给出成功处理的行数; OPEN执行后, 清为0, FECTH 后增值（原有值+上本次fetch的行数）; EXECUTE、INSERT、UPDATE、SELETE和SELECT后, 为成功处理的行数。<br/><br>    sqlerrd[4]: 指出语句中出错的位移, 首字符位移为0。<br/><br>sqlwarn: 字符数组, 8个元素, 用了5个。<br/><br>    sqlwarn[0]: 如为空, 无警告; 如为&quot;W&quot;, 有警告;<br/><br>    sqlwarn[1]: 如为 &quot;W&quot;, 表示宿主变量宽度不够, 返回字符数据被截断; 对数字型数据截断无警告。为了决定何字段被截断及截了多少, 查相应指示变量, 该指示变量的正值是列的原长。<br/><br>    sqlwarn[3]: 如为&quot;W&quot;, 表示查询选择表中的列数不等于SELECT或FECTH的INTO子句的宿主变量数, 返回为两者中少者。<br/><br>    sqlwarn[4]: 如为&quot;W&quot;, 表示DELETE或UPDATE语句无WHERE限制条件, 提醒用户小心。<br/></span></p><br><div><span style="color: rgb(51, 51, 51); line-height: 26px; text-align: left; font-size: 14px;">    sqlwarn[5]: 如为&quot;W&quot;, 表示EXEC SQL CREATE {PROCEDURE | FUNCTION | PACKAGE | PACKAGE BODY}语句由于PL/SQL编译而失败</span></div><br><div><span style="color: rgb(51, 51, 51); font-family: 宋体; line-height: 26px; text-indent: -18pt; text-align: left; font-size: 14px;"><br/></span></div><br><div style="text-indent: 0px;"><span style="font-size: 14px;"><span style="color: rgb(51, 51, 51); line-height: 26px; text-indent: -18pt; text-align: left;">指示</span><span style="color: rgb(51, 51, 51); font-family: 宋体; line-height: 26px; text-indent: -18pt; text-align: left;">变量的值，及其代表的含义如下：</span></span></div><br><div><br><p style="color: rgb(51, 51, 51); line-height: 26px; text-align: left; text-indent: -18pt;"><span style="font-size: 14px;"><span lang="EN-US" style="font-family: Wingdings;" xml:lang="EN-US">Ø<span style="line-height: normal; font-family: 'Times New Roman';">       </span></span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">0 </span></span><span style="font-family: 宋体;">操作成功</span></span></p><br><p style="color: rgb(51, 51, 51); line-height: 26px; text-align: left; text-indent: -18pt;"><span style="font-size: 14px;"><span lang="EN-US" style="font-family: Wingdings;" xml:lang="EN-US">Ø<span style="line-height: normal; font-family: 'Times New Roman';">       </span></span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">-1 </span></span><span style="font-family: 宋体;">该指示变量对应的宿主变量返回了或插入、更新成了</span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">NULL </span></span><span style="font-family: 宋体;">值</span></span></p><br><p style="color: rgb(51, 51, 51); line-height: 26px; text-align: left; text-indent: -18pt;"><span style="font-size: 14px;"><span lang="EN-US" style="font-family: Wingdings;" xml:lang="EN-US">Ø<span style="line-height: normal; font-family: 'Times New Roman';">       </span></span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">-2 </span></span><span style="font-family: 宋体;">从数据库存放数据到对应的宿主变量时，数据超长，并且不能推断出截断了多少字节的长度</span></span></p><br><div style="text-align: left;"><span style="font-size: 14px;"><span lang="EN-US" style="color: rgb(51, 51, 51); line-height: 26px; text-indent: -18pt; font-family: Wingdings;" xml:lang="EN-US">Ø<span style="line-height: normal; font-family: 'Times New Roman';">       </span></span><span style="color: rgb(51, 51, 51); line-height: 26px; text-indent: -18pt;"><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">&gt;0 </span></span><span style="font-family: 宋体;">在</span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">FETHC </span></span><span style="font-family: 宋体;">或</span><span lang="EN-US" xml:lang="EN-US"><span style="font-family: 'Times New Roman';">SELECT </span></span><span style="font-family: 宋体;">语句时，因数据超长而被截断存放在了对应的宿主变量中，指示变量存放对应列的长度</span></span><font color="#333333"><span style="line-height: 26px;"><br/></span></font></span></div><br><hr/><br>ORACA的说明<br><div><span style="font-size: 14px;">    ORACA是一类似SQLCA的数据结构, ORACA处理 ORACLE通信, 其信息量比SQLCA多。</span></div><br><div><span style="font-size: 14px;">ORACA的组成</span></div><br><div><span style="font-size: 14px;">    ORACA是C中的一结构类型变量, 定义如下:</span></div><br><div><span style="font-size: 14px;">    struct oraca</span></div><br><div><span style="font-size: 14px;">    { char    oracaid[8];</span></div><br><div><span style="font-size: 14px;">      long    oracabc;      long    oracchf;</span></div><br><div><span style="font-size: 14px;">      long    oradbgf;      long    orahchf;</span></div><br><div><span style="font-size: 14px;">      long    orastxtf;</span></div><br><div><span style="font-size: 14px;">      struct { unsigned short orastxtl;</span></div><br><div><span style="font-size: 14px;">               char            orastxtc[70];</span></div><br><div><span style="font-size: 14px;">      } orastxt;</span></div><br><div><span style="font-size: 14px;">      struct { unsigned short  orasfnml;</span></div><br><div><span style="font-size: 14px;">               char            orasfnmc[70];</span></div><br><div><span style="font-size: 14px;">      } orasfnm;</span></div><br><div><span style="font-size: 14px;">      long    oraslnr;      long    orahoc;</span></div><br><div><span style="font-size: 14px;">      long    oramoc;       long    oracoc;</span></div><br><div><span style="font-size: 14px;">      long    oranor;       long    oranpr;</span></div><br><div><span style="font-size: 14px;">      long    oranex;                     </span></div><br><div><span style="font-size: 14px;">    }; struct oraca oraca;</span></div><br><div><span style="font-size: 14px;">oracaid: 此字段被初始为&quot;ORACA&quot;, 标识一通信区。</span></div><br><div><span style="font-size: 14px;">oracabc: 整字段, 存ORACA长度。</span></div><br><div><span style="font-size: 14px;">oracchf: 整标志段, 0, 禁止游标缓冲区一致性检查 (缺省); 1,能进行游标缓冲区一致性检查。以DEBUG标</span></div><br><div><span style="font-size: 14px;">志段为前题。</span></div><br><div><span style="font-size: 14px;">oradbgf: DEBUG标志段, 0, 禁止所有DEBUG操作 (缺省); 1, 允许所有DEBUG操作。</span></div><br><div><span style="font-size: 14px;">orahchf: 标志段, 0, 禁止堆一致性检查 (缺省); 1, 允许堆一致性检查。以DEBUG标志段为前题。</span></div><br><div><span style="font-size: 14px;">orastxtf: 0, 不存SQL语句正文(缺省); 1, 仅对SQLERROR存SQL语句正文; 2, 仅对SQLERROR或WARNING存</span></div><br><div><span style="font-size: 14px;">SQL语句正文; 3, 总是存SQL语句正文。</span></div><br><div><span style="font-size: 14px;">orastxt: 子结构, 有下两个成员。</span></div><br><div><span style="font-size: 14px;">orastxtl: 存当前SQL语句长度。</span></div><br><div><span style="font-size: 14px;">orastxtc: 存当前SQL语句正文至多前70字符。</span></div><br><div><span style="font-size: 14px;">orasfnm: 子结构, 有下两个成员。</span></div><br><div><span style="font-size: 14px;">orasfnml: 存含有当前SQL语句的源文件名的长度。</span></div><br><div><span style="font-size: 14px;">orasfnmc: 存含有当前SQL语句的源文件名。</span></div><br><div><span style="font-size: 14px;">oraslnr: 当前SQL语句的行号。</span></div><br><div><span style="font-size: 14px;">orahoc: 记程序运行期MAXOPENCURSORS被设的最大值。</span></div><br><div><span style="font-size: 14px;">oramoc: 记程序所需打开的游标最大数。</span></div><br><div><span style="font-size: 14px;">oracoc: 记程序当前所需打开的游标数。</span></div><br><div><span style="font-size: 14px;">oranor: 记程序所需的游标缓冲存储器的再赋值数。</span></div><br><div><span style="font-size: 14px;">oranpr: 记程序所需的SQL语句分析数。</span></div><br><div><span style="font-size: 14px;">oranex: 记程序所需的SQL语句执行数。</span></div><br><div><span style="font-size: 14px;">ORACA的说明</span></div><br><div><span style="font-size: 14px;">    ORACA必在说明段外说明, 方式为:</span></div><br><div><span style="font-size: 14px;">    EXEC SQL INCLUDE ORACA; 或把上述代码写到程序中。</span></div><br><div><span style="font-size: 14px;">    一个PRO</em>C程序可说明多个ORACA, 比如一全程 ORACA, 几个局部ORACA, ORACLE仅对活动的SQLCA返回信</span></div><br><div><span style="font-size: 14px;">息。                </span></div><br><div><span style="font-size: 14px;">    为了使用ORACA, 必对预编译作指示, 或在命令行设ORACA=YES或在程序中写EXEC ORACLE OPTION(ORACA=YES)语句。</span></div><br><div><span style="font-size: 14px;">SQLCODE说明</span></div><br><div><span style="font-size: 14px;">    MODE={ANSI|ANSI14}时, 必在说明段内部或外部说明 4字节的SQLCODE。一个PRO<em>C程序可说明多个</span></div><br><div><span style="font-size: 14px;">SQLCODE, 比如一全程SQLCODE几个局部SQLCODE。在一SQL语句操作后, ORACLE把一状态码返回给当前有效的</span></div><br><div><span style="font-size: 14px;">SQLCODE中, 然后程序可显式或隐式 (WHENEVER)地访问SQLCODE, 以决定当前SQL执行的情况。SQLCODE的含</span></div><br><div><span style="font-size: 14px;">义与SQLCA内的SQLCODE分量相同。</span></div><br><div><span style="font-size: 14px;">INCLUDE</span></div><br><div><span style="font-size: 14px;">    INCLUDE把文件拷到程序内, 格式为:</span></div><br><div><span style="font-size: 14px;">    EXEC SQL INCLUDE filename;</span></div><br><div><span style="font-size: 14px;">    预编译时, 该语句被filename的副本代替。</span></div><br><div><span style="font-size: 14px;">    如系统使用文件扩展名, 如未指定, 头文件一般为 .h; PRO</em>C源文件一般为 .c。如系统使用目录, 可</span></div><br><div><span style="font-size: 14px;">用INCLUDE设置:</span></div><br><div><span style="font-size: 14px;">    INCLUDE = path</span></div><br><div><span style="font-size: 14px;">    之后系统首先用当前目录, 然后用path询找文件。</span></div><br><div><span style="font-size: 14px;">七. 错误处理</span></div><br><div><span style="font-size: 14px;">    7.1 必要与方法</span></div><br><div><span style="font-size: 14px;">    错误处理是每个程序的重要部分, 因它会增加程序的正确性。ORACLE的错误处理主要是及时发现 SQL执</span></div><br><div><span style="font-size: 14px;">行的错误, 并加以恢复处理。ORACLE作错误处理的依据是SQLCA和ORACA。ORACLE在DB系统中可用下述三种方</span></div><br><div><span style="font-size: 14px;">式作错误处理:</span></div><br><div><span style="font-size: 14px;">    . 用WHENEVER隐式检查SQLCA。</span></div><br><div><span style="font-size: 14px;">    . 显式检查SQLCA。</span></div><br><div><span style="font-size: 14px;">    . 用指示器变量检查NULL值和&quot;截短&quot;问题。</span></div><br><div><span style="font-size: 14px;">    用指示器变量检查NULL值和&quot;截短&quot;问题前已讲述。本处主要讲用WHENEVER隐式检查SQLCA和显式检查</span></div><br><div><span style="font-size: 14px;">SQLCA。</span></div><br><div><span style="font-size: 14px;">    7.2 用WHENEVER处理错误</span></div><br><div><span style="font-size: 14px;">    该语句诊断SQL错误最简单, 最常用。</span></div><br><div><span style="font-size: 14px;">    7.2.1 WHENEVER语句的格式</span></div><br><div><span style="font-size: 14px;">    WHENEVER用于指定ORACLE发现错误、警告或找不到相等条件时应采用的动作, 其语法为:</span></div><br><div><span style="font-size: 14px;">EXEC SQL WHENEVER {NOT FOUND | SQLERROR | SQLWARNING}</span></div><br><div><span style="font-size: 14px;">    {CONTINUE | GOTO label_name | DO routine_call | STOP}</span></div><br><div><span style="font-size: 14px;">    ORACLE对以下三个条件自动检查SQLCA:</span></div><br><div><span style="font-size: 14px;">    . NOT FOUND, 当执行SQL数据操纵语句时, 如没有一行被处理, sqlcode被置为1403或100。</span></div><br><div><span style="font-size: 14px;">    . SQLERROR, 当SQL语句执行出错, sqlcode被置为负。</span></div><br><div><span style="font-size: 14px;">    . SQLWARNING, 当把截短列值赋给宿主变量或有其它异常发生, SQLWARN [ ]的元素被设置。</span></div><br><div><span style="font-size: 14px;">    ORACLE发现上述三条件时, 可作下述四种动作:</span></div><br><div><span style="font-size: 14px;">    . CONTINUE, 继续执行下一SQL语句。</span></div><br><div><span style="font-size: 14px;">    . GOTO label_name, 程序转到label_name标明的语句。</span></div><br><div><span style="font-size: 14px;">    . DO routine_call, 程序调用子程序。DO break 为提早退出一个循环。</span></div><br><div><span style="font-size: 14px;">    . STOP, 停止程序执行。</span></div><br><div><span style="font-size: 14px;">    7.2.2 WHENEVER语句的使用</span></div><br><div><span style="font-size: 14px;">    该语句是说明性语句, 其作用域是按位置的, 它测试它之后的可执行SQL语句, 其作用直到另一同类语</span></div><br><div><span style="font-size: 14px;">句出现。例:</span></div><br><div><span style="font-size: 14px;">    step1:</span></div><br><div><span style="font-size: 14px;">        EXEC SQL WHENEVER SQLERROR STOP;</span></div><br><div><span style="font-size: 14px;">        EXEC SQL CONNECT :username IDENTIFIED BY password;</span></div><br><div><span style="font-size: 14px;">        …</span></div><br><div><span style="font-size: 14px;">        GOTO step3;</span></div><br><div><span style="font-size: 14px;">    step2:</span></div><br><div><span style="font-size: 14px;">        EXEC SQL WHENEVER SQLERROR CONTINUE;</span></div><br><div><span style="font-size: 14px;">        EXEC SQL UPDATE emp SET sal = sal * 1.10;</span></div><br><div><span style="font-size: 14px;">        …</span></div><br><div><span style="font-size: 14px;">    step3:</span></div><br><div><span style="font-size: 14px;">        EXEC SQL DROP INDEX emp_index;</span></div><br><div><span style="font-size: 14px;">        …</span></div><br><div><span style="font-size: 14px;">    第一个WHENEVER仅对CONNECT有效, 第二个WHENEVER对 UPDATE</span></div><br><div><span style="font-size: 14px;">及DROP有效, 与程序的控制流无关。</span></div><br><div><span style="font-size: 14px;">    用游标提取行, 常用NOT FOUND来作为结束条件, 如:</span></div><br><div><span style="font-size: 14px;">    mian()</span></div><br><div><span style="font-size: 14px;">    { …</span></div><br><div><span style="font-size: 14px;">      EXEC SQL EHENEVER NOT FOUND goto no_more;</span></div><br><div><span style="font-size: 14px;">      while (1) { EXEC SQL FETCH emp_cursor</span></div><br><div><span style="font-size: 14px;">                      INTO :emp_name, :salary;</span></div><br><div><span style="font-size: 14px;">                  … }</span></div><br><div><span style="font-size: 14px;">      no_more:</span></div><br><div><span style="font-size: 14px;">          EXEC SQL WHENEVER SQLERROR CONTINUE;</span></div><br><div><span style="font-size: 14px;">          EXEC SQL CLOSE emp_cursor;</span></div><br><div><span style="font-size: 14px;">          EXEC SQL COMMIT RELEASE;</span></div><br><div><span style="font-size: 14px;">          …</span></div><br><div><span style="font-size: 14px;">    }</span></div><br><div><span style="font-size: 14px;">    在写错误处理时, 要注意避免成限循环。在一源文件内, WHENEVER管理其后的SQL语句, 如这些 SQL语</span></div><br><span style="font-size: 14px;">句分布在不同函数内时, 就有可能出现编译错。</span><br/></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/Mac系统编译Qt的oracle驱动/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/Mac系统编译Qt的oracle驱动/">Mac系统编译Qt的oracle驱动</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>Mac系统编译Qt的oracle驱动</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div style="font-size: 12px; word-wrap: break-word; color: rgb(51, 51, 51); font-family: tahoma, 宋体; background-color: rgb(239, 239, 239); text-align: center;"><br><h1 style="font-size: 16px; padding-top: 10px;"><span style="font-size: 14px; line-height: 1.6;">今天编译在Mac下编译了</span><a href="http://www.linuxidc.com/topicnews.aspx?tid=12" target="_blank" title="Oracle" style="font-size: 14px; line-height: 1.6; color: rgb(179, 43, 213);">Oracle</a><span style="font-size: 14px; line-height: 1.6;">的SQL驱动插件，这里记录编译过程供参考。</span><br/></h1><br></div><br><div style="font-size: 12px; word-wrap: break-word; clear: both; padding: 0px; overflow: hidden; color: rgb(51, 51, 51); font-family: tahoma, 宋体; background-color: rgb(239, 239, 239);"><br><div style="word-wrap: break-word;"/><br><div style="word-wrap: break-word; text-align: center;"/><br></div><br><div style="font-size: 14px; word-wrap: break-word; font-family: tahoma, 宋体; line-height: 1.6; color: rgb(51, 51, 51); background-color: rgb(239, 239, 239); overflow-x: hidden; word-break: break-all;"><br><div style="word-wrap: break-word; float: right; padding-left: 10px; line-height: 1.6;"/><br><p>先介绍一下编译环境：Mac OS X 10.7.3, 安装Qt SDK 1.2 for Mac，XCode 4.2.1。</p><br><p>1. 首先是到Oracle的网站上下载相关的库和开发包，按照Qt文档中的说明（How to Build the OCI Plugin on Unix and Mac OS X），需要下载&quot;Instant Client Package - Basic&quot;和&quot;Instant Client Package - SDK&quot;两个包，可以从<a title="" href="http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html" target="_blank" style="color: rgb(179, 43, 213);">这里</a>找到要下载的内容。</p><br><p>2. 把下载的zip文件解压到同一个目录下，如Oracle10gClient；</p><br><p>3. 编译。在qt的文档中有两种方法，一个是利用configure生成makefile在执行make，另一种是利用qmake生成makefile再生成。我这里用第一种方法没有成功（原因不详），这里说的是第二种方法：</p><br><p>1）进入Qt源码目录，~/QtSDK/QtSources/4.8.0/src/plugins/sqldrivers/oci</p><br><p>2)  执行qmake命令, 按照文档中的说明，执行</p><br><ol><br><li>qmake &quot;INCLUDEPATH+=[your_oracle_dir]/instantclient_10_2/sdk/include&quot; &quot;LIBS+=-L[your_oracle_dir]/instantclient_10_2 -Wl,-rpath,[your_oracle_dir]/instantclient_10_2&quot; -lclntsh -lnnz10&quot; <a href="http://oci.pro" target="_blank">oci.pro</a>  </li><br></ol><br><p>这里的[your_oracle_dir]需要替换为第2步创建的目录。然后再执行make生成库文件。</p><br><p>在执行时make发现无法找到&lt;QtSql/private/qsqlcachedresult_p.h&gt;这个文件，www.linuxidc.com而实际这个文件在目录中是有的，原因是默认执行qmake时只把二进制的include目录QtSDK/Desktop/Qt/4.8.0/gcc/include这个目录放在INCLUDEPATH中，而这个文件是在源代码目录下，所以会出现无法找到头文件的问题。解决办法是把源代码的include目录在qmake时直接添加进去，也就是执行如下的qmake命令：</p><br><ol><br><li>qmake &quot;INCLUDEPATH+=[your_oracle_dir]/instantclient_10_2/sdk/include ~/QtSDK/QtSources/4.8.0/include&quot; &quot;LIBS+=-L[your_oracle_dir]/instantclient_10_2 -Wl,-rpath,[your_oracle_dir]/instantclient_10_2&quot; -lclntsh -lnnz10&quot; <a href="http://oci.pro" target="_blank">oci.pro</a>  </li><br></ol><br><p>这样是可以编译成功的，但是在最后link时还有一个错误，无法找到库文件“library not found for -lclntsh”，查找了oracle的安装目录下，确实没有这个文件，但有一个libclntsh.dylib.10.1，猜测这个就是一个动态库，只是版本不同的问题。于是给这个文件做个符号链接，在[your_oracle_dir]目录下执行</p><br><p>ln -s libclntsh.dylib.10.1 libclntsh.dylib  </p><br><p>然后再回头去执行make命令，就可以创建成功了。创建后的文件在~/QtSDK/QtSources/4.8.0/src/plugins/sqldrivers/oci目录下，把它们复制到Qt的sqldrivers目录下就可以了。</p><br></div><br><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;">以上就是整个生成驱动插件的过程。</span><br><div><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br><div><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;"><span style="-evernote-last-insertion-point:true;"/>昨天在Mac下成功编译了MySql和Oracle的数据库插件驱动，但遗憾的是在程序中无论如何也加载不了这两个驱动，也无法连接数据库。在环境变量中设置QT_DEBUG_PLUGINS=1, 再启动程序后Qt会报告一些加载插件的调试信息，从中可以看出是插件不兼容引起的，也就是文档中所说的Build Key的问题，在文档中有提到可能需要清除插件缓存（Plugin cache），应该是在一个QSettings定义的文件中，但我没找到。无奈下将QtSDK删除重新安装一遍，又从头开始，最后终于成功。下面记录详细的过程，供日后参考。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">1. 首先安装QtSDK 1.2, 安装在 ~/QtSDK目录下，安装的时候要选择安装4.8.0的源代码，否则后面无法编译plugin；</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">2. 下载MySql和Oracle的数据库连接的动态库；可从官网下载，注意选择与你的系统合适的版本，我这里是Max OSX 10.7.3 64bit；MySql下载的是mysql-connector-c-6.0.2-osx10.5-x86-64bit.tar.gz， oracle下需要的是instantclient basic包和instantclient SDK包。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">3. 将下载的数据库文档解压缩到本地目录下，记录下文件目录；MySql解压在~/bin/mysql目录下，下面会有include和lib子目录；oracle的两个包解压到~/bin/oracle目录下，目录下有库文件和sdk目录；</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">4.准备工作完了后，开始编译生成Qt库；首先执行命令（后面3行是一个命令，因太长了分行显示）</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 916px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">&lt;span style=&quot;font-size:16px;&quot;&gt;cd ~/QtSDK/QtSources/4.8.0  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">./configure -opensource -prefix /Users/lutx/QtSDK/Desktop/Qt/4.8.0/gcc -plugin-sql-mysql -plugin-sql-oci  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"> -plugin-sql-odbc -plugin-sql-sqllite -I/Users/lutx/bin/mysql/include -I/Users/lutx/bin/oracle/sdk/include  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"> -L/Users/lutx/bin/mysql/lib -L/Users/lutx/bin/oracle&lt;/span&gt;  </span></li><br></ol><br></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">上面的命令中，prefix是定义编译后的安装目录，默认是安装到/usr/local/Trolltech/Qt-4.8.0目录下，我这里给定义安装到 QtSDK的目录下，这样可以避免后面在QtCreator中配置版本，或者利用install_name_tools来修改动态库名称等操作。经过一段 时间（几分钟）等待后，生成了整个源目录下的makefile文件。系统应该显示</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1190px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">Qt is now configured for building. Just run ‘make’.  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">Once everything is built, you must run ‘make install’.  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">Qt will be installed into /Users/[xxxx]/QtSDK/Desktop/Qt/4.8.0/gcc  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">To reconfigure, run ‘make confclean’ and ‘configure’.  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">上面的[xxxx]应该是你的系统登录用户名，下同。</span><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">5.下面开始编译过程，应该很简单，直接在刚才的目录下继续执行make命令即可，但是我这里在编译到QtWebkit这个库的时候会有错误，因此后面将跳过这个库继续编译后面的库。出现的错误是：<br/></span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1460px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">fileapi/FileReaderLoader.cpp: In member function ‘void WebCore::FileReaderLoader::convertToDataURL()’:  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">fileapi/FileReaderLoader.cpp:307: error: ‘base64Encode’ was not declared in this scope  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[3]: <strong><em> [.obj/debug-static/FileReaderLoader.o] Error 1  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[2]: </em></strong> [debug-all] Error 2  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[1]: <strong><em> [sub-WebCore-make_default-ordered] Error 2  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make: </em></strong> [sub-webkit-make_default-ordered] Error 2  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">这里也不知道是么原因，没搞明白。</span><br><div><br style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><br/></div><br><div><br style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><br/></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">5.通过Makefile文件知道，在Webkit后面还有scripttools,plugins(这个是主要目的), 后面用命令逐个编译每个库。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1762px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">cd src/scripttools;make;cd ../plugins;make;cd ../imports;make;cd ../tools;make;cd ../translations;make;cd ../..  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make install  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">因为不是必需的，最后没有编译examples和demos两个目录。</span><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div><span style="font-size: 16px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); line-height: 26px; text-align: left;">如此编译已经成功，另外在程序运行时需要将mysql的lib目录和oracle的lib目录加到环境变量DYLD_LIBRARY_PATH中，否则还是无法加载数据库插件驱动。</span><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/SQL 建表 删表/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/SQL 建表 删表/">SQL 建表 删表</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>SQL 建表 删表</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div><span style="font-size: 14px;">create table 表名</span></div><br><div><span style="font-size: 14px;">(</span></div><br><div><span style="font-size: 14px;">     字段名 数据类型 [default 缺省值] [constrait 约束],    //[ ]缺省值</span></div><br><div><span style="font-size: 14px;">     …,</span></div><br><div><span style="font-size: 14px;">     constraint 表约束,</span></div><br><div><span style="font-size: 14px;">) <span style="-evernote-last-insertion-point:true;"/></span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">create table </span><span style="font-size: 14px;">表名</span><span style="font-size: 14px;"> as </span><span style="font-size: 14px;">select语句;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">举例：</span></div><br><div><span style="font-size: 14px;">creat table stu                                                                                 </span></div><br><div><span style="font-size: 14px;">(</span></div><br><div><span style="font-size: 14px;">     </span><span style="font-size: 14px;">id number(5) </span><span style="font-size: 14px;">default 1 constraint id_key primary key constraint uni_stu unique</span><span style="font-size: 14px;">,                        //constraint id_key 可不写，主键</span></div><br><div><span style="font-size: 14px;">     name varchar2(30)</span> <span style="font-size: 14px;">constraint null_id not null check(length(name)&lt;=10)</span><span style="font-size: 14px;">,</span></div><br><div><span style="font-size: 14px;">     score number(6,2) constraint score_fk references s_emp(id) on delete cascade(null),              //外键-&gt;连接表s_emp的字段id                </span></div><br><div><span style="font-size: 14px;">     birth date,</span></div><br><div><span style="font-size: 14px;">     remark varchar2(50)</span></div><br><div><span style="font-size: 14px;">);</span></div><br><div><br/></div><br><div><br><hr/></div><br><div><span style="font-size: 14px;">drop table 表名</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">举例：</span></div><br><div><span style="font-size: 14px;">drop table stu;</span></div><br><div><br><hr/></div><br><div><span style="font-size: 14px;">建表要求：</span><br/></div><br><div><span style="font-size: 14px;">     必须以字母开始</span></div><br><div><span style="font-size: 14px;">     1-30个字母长</span></div><br><div><span style="font-size: 14px;">     不能包含特殊字符</span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/SQL select/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/SQL select/">SQL select</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>SQL select</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px;">select 投影字段 from 表 where select条件 group by 分组条件 order by 排序 having 过滤条件; //selection</span><br><div><span style="font-size: 14px;">select 投影字段 from 表; //projection 表可以为多个，用逗号隔开</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">— distinct:只选择不同记录</span></div><br><div><span style="font-size: 14px;">select distinct 投影字段 from 表;</span></div><br><div><span style="font-size: 14px;"><br/><br>— || 可连接字符串  <span style="-evernote-last-insertion-point:true;"/></span></div><br><div><span style="font-size: 14px;">select 投影字段||’ ‘ from 表;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">— nvl处理空值 </span></div><br><div><span style="font-size: 14px;">select nvl(投影字段,为空时返回值) from 表; </span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">— 可加用户名</span></div><br><div><span style="font-size: 14px;">select 投影字段 from 用户名.表;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">— dual 哑表</span></div><br><div><span style="font-size: 14px;">select 投影字段 from dual;</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">—(+)表示附表</span></div><br><span style="font-size: 14px;">select 投影字段 from s<em>emp.id=d_as.id(+);<br/><br>select 投影字段 from s_emp.id(+)=d_as.id;</span><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">— select 支持嵌套查询，可以在select,from,where使用子查询</span></div><br><div><span style="font-size: 14px;">select first_name from s_emp where id=(</span></div><br><div><span style="font-size: 14px;">select manage_id from s_emp where id=2);                                                                                 //被嵌套的查询称为子查询</span></div><br><div><span style="font-size: 14px;"><br/></span><br><div><br><hr/><br><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">举例：select avg(id+5) from s_emp </span></div><br><div><span style="font-size: 14px;">               where id&gt;1 and ( name like ‘_a%’(</em>=?,%=*  任意类型) escape ‘\’ or name is null )       //null 代表负无穷 escape 转义</span></div><br><div><span style="font-size: 14px;">               order by name,-id                                                                                                           //可以是多字段和表达式</span></div><br><div><span style="font-size: 14px;">               group by name                                                                                                               //横向分组</span></div><br><div><span style="font-size: 14px;">               having avg(id+5)&gt;10                                                                                                       //对分组后的情况进行过滤</span></div><br><div><span style="font-size: 14px;">          </span></div><br><div><span style="font-size: 14px;">               </span></div><br><div><span style="font-size: 14px;"> </span></div><br><div><br/></div><br></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/oracle序列 索引 视图/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/oracle序列 索引 视图/">oracle序列 索引 视图</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>oracle序列 索引 视图</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div>序列：create(alter) sequence <i>name                            </i>  //需要用nextval初始化，另外curial返回当前值</div><br><div>                    [increment by <i>n</i>]</div><br><div>                    [start with <i>n</i>]<span style="-evernote-last-insertion-point:true;"/></div><br>                    [maxvalue <i>n</i> | nomaxvalue]<br/><br>                    [minvalue <i>n</i> | nominvalue]<br><div>                    [cycle |  nocycle]</div><br><div>                    [cache <i>n</i> | nocache]</div><br><div>          drop sequence <i>name</i><br><hr style="font-style: italic;"/><br>索引：creat index <i>name                                              </i>//加快访问速度</div><br><div>                    on <i>表名</i>(<i>字段名</i>,…);</div><br><div>          drop index <i>name</i>;<br><hr/><br>视图：creat view <i>name                                              </i> //查询模板，不是真正存在的表，且视图中不允许使用order by</div><br><div><i>                    </i>as</div><br><div>                    select子查询</div><br><div>                    [with check选项]</div><br><div>                    [with read only]                                       //不能通过视图修改东西</div><br><div>          select view_name view_text from <i>name</i>;</div><br><div>          drop view <i>name</i>; </div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/SQL DML语句 插入 删除 修改 事务/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/SQL DML语句 插入 删除 修改 事务/">SQL DML语句 插入 删除 修改 事务</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>SQL DML语句 插入 删除 修改 事务</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>1、 insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> 插入语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jack’, 25);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>主键自增可以不插入，所以用null代替<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>指定列 <span style="-evernote-last-insertion-point:true;"/><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp(name, age) <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(‘jack’, 22);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>在表面后面带括号，括号中写列名，values中写指定列名的值即可。当省略列名就表示插入全部数据，<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>注意插入值的顺序和列的顺序需要保持一致。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>Set方式插入，也可以指定列<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> id = 7, name = <span style="word-wrap: normal; word-break: normal; color: rgb(0, 96, 128);">‘jason’</span>;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>MySQL中外键的table的外键引用列可以插入数据可以为null，不参照主表的数据。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>使用子查询插入数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp(name) <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">select</span> name <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> classes;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>多行插入<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jack’, 22), (<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jackson’ 23);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><hr/><br><pre><br>2、 <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> 修改语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>update主要完成对数据的修改操作，可以修改一条或多条数据。修改多条或指定条件的数据，需要用where条件来完成。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>修改所有数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack2’;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>所有的数据的name会被修改，如果修改多列用“,”分开<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack’, age = 22;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>修改指定条件的记录需要用where<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack’ <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">where</span> age &gt; 22;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><hr/><br><pre><br>3、 <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> 删除语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除table中的数据，可以删除所有，带条件可以删除指定的记录。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除所有数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> temp;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除指定条件数据<br></pre><br><span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left;">temp</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">where</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left;">age &gt; 20;</span><br><div><br><hr/><br><div><br><ul><br><li><span style="font-size: 14px;">commit; 提交事务                                             //</span><span style="font-family: 'Courier New'; font-size: 13px; line-height: 20px; text-align: left; background-color: rgb(244, 244, 244);">DDL DCL隐形提交 DDL不支持回滚 DML需要commit</span><br/></li><br><li><span style="font-size: 14px;">rollback;</span><br/></li><br><li><span style="font-size: 14px;">savepoint 保存点;</span><br/></li><br><li><span style="font-size: 14px;">rollback to 保存点;</span><br/></li><br></ul><br><div><br><hr/><br><br/></div><br></div><br></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:53.000Z"><a href="/2014/04/14/基本语法 2/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/基本语法 2/">基本语法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="输出">输出</h3>
+<ul>
+<li><p>printf “hello world”</p>
+</li>
+<li><p>printf “%-10s” Mark</p>
+</li>
+<li><p>echo -e “\t\n”</p>
+</li>
+</ul>
+<ul>
+<li>echo -e “\e[1;31mThis is red text\e[0m”  </li>
+</ul>
+<h3 id="变量赋值">变量赋值</h3>
+<ul>
+<li><p>var=app</p>
+</li>
+<li><p>var = app       :  这是比较操作</p>
+</li>
+<li><p>echo ${var}le</p>
+</li>
+</ul>
+<ul>
+<li>export PATH=”${PATH}:/usr/sbin”</li>
+</ul>
+<ul>
+<li><p>echo $UID       :  显示用户身份,root用户为0</p>
+</li>
+<li><p>echo ${#var}      :   #显示变量的长度</p>
+</li>
+</ul>
+<h3 id="变量运算">变量运算</h3>
+<ul>
+<li><p>var1=1;var2=3</p>
+</li>
+<li><p>let result=var1+var2</p>
+</li>
+<li><p>result=$[var1+var2]</p>
+</li>
+<li><p>echo $var1*$var2+3 | bc     :    bc:科学计算器</p>
+</li>
+<li><p>echo “scale=1;3/8” | bc      :    小数精度1</p>
+</li>
+<li><p>echo “ibase=10;obase=2;sqrt(100) “ | bc     :     小数精度1</p>
+</li>
+</ul>
+<h3 id="重定向">重定向</h3>
+<ul>
+<li><p>echo “QW” &gt; temp     :  截断存储</p>
+</li>
+<li><p>echo “QW” &gt;&gt; temp    :   追加存储</p>
+</li>
+<li><p>ls + 2&gt; temp     :   错误信息重定向到文件</p>
+</li>
+<li><p>ls + 2&gt;&amp;1 temp   :    标准信息和错误信息重定向到文件</p>
+</li>
+<li><p>ls + &amp;&gt; temp    :    标准信息和错误信息重定向到文件</p>
+</li>
+<li><p>bash &lt; temp :       :    从文件中读取数据</p>
+</li>
+</ul>
+<h3 id="文件描述符">文件描述符</h3>
+<ul>
+<li><p>exec 3&lt;temp</p>
+</li>
+<li><p>cat &lt;&amp;3</p>
+</li>
+<li><p>exec 3&gt;temp</p>
+</li>
+<li><p>ls &gt;&amp;3</p>
+</li>
+<li><p>exec 3&gt;&gt;temp</p>
+</li>
+<li><p>ls &gt;&gt;&amp;3</p>
+</li>
+</ul>
+<h3 id="数组和关联数组">数组和关联数组</h3>
+<ul>
+<li><p>array=(1 2 3 4 5 6)</p>
+</li>
+<li><p>array[1]=1</p>
+</li>
+<li><p>echo $array[1]</p>
+</li>
+<li><p>echo $array[*]</p>
+</li>
+<li><p>echo ${#array} </p>
+</li>
+<li><p>declare -A ass_array      :   (声明关联数组)</p>
+</li>
+<li><p>ass_array[asd]=afhkjwe</p>
+</li>
+<li><p>echo ${ass_array[*]} </p>
+</li>
+</ul>
+<h3 id="变量含义">变量含义</h3>
+<ul>
+<li>$$ :  Shell本身的PID（ProcessID） </li>
+<li>$! :  Shell最后运行的后台Process的PID </li>
+<li>$? :  最后运行的命令的结束代码（返回值） </li>
+<li>$- :  使用Set命令设定的Flag一览 </li>
+<li>$<em> :  所有参数列表。如”$</em>“用「”」括起来的情况、以”$1 $2 … $n”的形式输出所有参数。 </li>
+<li>$@ :  所有参数列表。如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。 </li>
+<li>$# :  添加到Shell的参数个数 </li>
+<li>$0 :  Shell本身的文件名 </li>
+<li>$1～$n :  添加到Shell的各参数值。$1是第1参数、$2是第2参数…。 </li>
+</ul>
+<ul>
+<li>在命令末尾加&amp; : 将命令至于后台并执行脚本</li>
+</ul>
+<h3 id="获取终端信息">获取终端信息</h3>
+<ul>
+<li><p>tput cols   : 获取终端列数</p>
+</li>
+<li><p>tput lines   : 获取终端行数</p>
+</li>
+<li><p>tput longname   : 终端名</p>
+</li>
+<li><p>tput cup 100 100: 移动光标</p>
+</li>
+<li><p>tputsetb 4   : 设置背景色</p>
+</li>
+<li><p>tputsetf 4   : 设置字体色</p>
+</li>
+<li><p>tput bold   : 加粗</p>
+</li>
+<li><p>tput smul/tput rmul   : 下划 </p>
+</li>
+<li><p>tputed   : 删除光标到行尾的内容</p>
+</li>
+<li><p>stty -echo/stty echo   : 禁止回显与回显</p>
+</li>
+</ul>
+<h3 id="日期">日期</h3>
+<ul>
+<li><p>date : 读取日期</p>
+</li>
+<li><p>date +%s : 打印纪元时</p>
+</li>
+<li><p>date “+%d %B %Y”</p>
+</li>
+</ul>
+<h3 id="输出-1">输出</h3>
+<ul>
+<li><p>printf “hello world”</p>
+</li>
+<li><p>printf “%-10s” Mark</p>
+</li>
+<li><p>echo -e “\t\n”</p>
+</li>
+</ul>
+<ul>
+<li>echo -e “\e[1;31mThis is red text\e[0m”  </li>
+</ul>
+<h3 id="变量赋值-1">变量赋值</h3>
+<ul>
+<li><p>var=app</p>
+</li>
+<li><p>var = app       :  这是比较操作</p>
+</li>
+<li><p>echo ${var}le</p>
+</li>
+</ul>
+<ul>
+<li>export PATH=”${PATH}:/usr/sbin”</li>
+</ul>
+<ul>
+<li><p>echo $UID       :  显示用户身份,root用户为0</p>
+</li>
+<li><p>echo ${#var}      :   #显示变量的长度</p>
+</li>
+</ul>
+<h3 id="变量运算-1">变量运算</h3>
+<ul>
+<li><p>var1=1;var2=3</p>
+</li>
+<li><p>let result=var1+var2</p>
+</li>
+<li><p>result=$[var1+var2]</p>
+</li>
+<li><p>echo $var1*$var2+3 | bc     :    bc:科学计算器</p>
+</li>
+<li><p>echo “scale=1;3/8” | bc      :    小数精度1</p>
+</li>
+<li><p>echo “ibase=10;obase=2;sqrt(100) “ | bc     :     小数精度1</p>
+</li>
+</ul>
+<h3 id="重定向-1">重定向</h3>
+<ul>
+<li><p>echo “QW” &gt; temp     :  截断存储</p>
+</li>
+<li><p>echo “QW” &gt;&gt; temp    :   追加存储</p>
+</li>
+<li><p>ls + 2&gt; temp     :   错误信息重定向到文件</p>
+</li>
+<li><p>ls + 2&gt;&amp;1 temp   :    标准信息和错误信息重定向到文件</p>
+</li>
+<li><p>ls + &amp;&gt; temp    :    标准信息和错误信息重定向到文件</p>
+</li>
+<li><p>bash &lt; temp :       :    从文件中读取数据</p>
+</li>
+</ul>
+<h3 id="文件描述符-1">文件描述符</h3>
+<ul>
+<li><p>exec 3&lt;temp</p>
+</li>
+<li><p>cat &lt;&amp;3</p>
+</li>
+<li><p>exec 3&gt;temp</p>
+</li>
+<li><p>ls &gt;&amp;3</p>
+</li>
+<li><p>exec 3&gt;&gt;temp</p>
+</li>
+<li><p>ls &gt;&gt;&amp;3</p>
+</li>
+</ul>
+<h3 id="数组和���联数组-1">数组和关联数组</h3>
+<ul>
+<li><p>array=(1 2 3 4 5 6)</p>
+</li>
+<li><p>array+=(7)</p>
+</li>
+<li><p>array[1]=1</p>
+</li>
+<li><p>echo $array[1]</p>
+</li>
+<li><p>echo $array[*]</p>
+</li>
+<li><p>echo ${#array} </p>
+</li>
+<li><p>declare -A ass_array      :   (声明关联数组)</p>
+</li>
+<li><p>ass_array[asd]=afhkjwe</p>
+</li>
+<li><p>echo ${ass_array[*]} </p>
+</li>
+</ul>
+<h3 id="变量含义-1">变量含义</h3>
+<ul>
+<li>$$ :  Shell本身的PID（ProcessID） </li>
+<li>$! :  Shell最后运行的后台Process的PID </li>
+<li>$? :  最后运行的命令的结束代码（返回值） </li>
+<li>$- :  使用Set命令设定的Flag一览 </li>
+<li>$<em> :  所有参数列表。如”$</em>“用「”」括起来的情况、以”$1 $2 … $n”的形式输出所有参数。 </li>
+<li>$@ :  所有参数列表。如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。 </li>
+<li>$# :  添加到Shell的参数个数 </li>
+<li>$0 :  Shell本身的文件名 </li>
+<li>$1～$n :  添加到Shell的各参数值。$1是第1参数、$2是第2参数…。 </li>
+</ul>
+<h3 id="获取终端信息-1">获取终端信息</h3>
+<ul>
+<li><p>tput cols   : 获取终端列数</p>
+</li>
+<li><p>tput lines   : 获取终端行数</p>
+</li>
+<li><p>tput longname   : 终端名</p>
+</li>
+<li><p>tput cup 100 100: 移动光标</p>
+</li>
+<li><p>tputsetb 4   : 设置背景色</p>
+</li>
+<li><p>tputsetf 4   : 设置字体色</p>
+</li>
+<li><p>tput bold   : 加粗</p>
+</li>
+<li><p>tput smul/tput rmul   : 下划 </p>
+</li>
+<li><p>tputed   : 删除光标到行尾的内容</p>
+</li>
+<li><p>stty -echo/stty echo   : 禁止回显与回显</p>
+</li>
+</ul>
+<h3 id="日期-1">日期</h3>
+<ul>
+<li><p>date : 读取日期</p>
+</li>
+<li><p>date +%s : 打印纪元时</p>
+</li>
+<li><p>date “+%d %B %Y”</p>
+</li>
+</ul>
+<h3 id="调试">调试</h3>
+<ul>
+<li><p>bash -x <em>*</em>.sh</p>
+</li>
+<li><p>set -x/set +x : 调试开始/调试结束</p>
+</li>
+</ul>
+<h3 id="函数">函数</h3>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">print</span><span class="params">()</span>
+
+{</span>
+
+
+    <span class="keyword">echo</span> $<span class="number">1</span> $<span class="number">2</span>;
+
+
+}
+</code></pre><ul>
+<li><p>export -f print : 将函数导出到环境变量</p>
+</li>
+<li><p>$? :  最后运行的函数的返回值</p>
+</li>
+</ul>
+<h3 id="管道">管道</h3>
+<ul>
+<li><p>ls | cat -n : ls的输出通过管道传给cat</p>
+</li>
+<li><p>var=$(ls | cat -n)  : ()表示生成一个子进程,该进程本身是一个独立的进程.再通过$取值返回</p>
+</li>
+<li><p>echo $var</p>
+</li>
+</ul>
+<h3 id="读取字符">读取字符</h3>
+<ul>
+<li><p>read -n  2 var : 读取2个字符存入变量var中</p>
+</li>
+<li><p>read -s var : 无回显</p>
+</li>
+<li><p>read -p “Enter input” var : 输入提示</p>
+</li>
+<li><p>read -t 2 var : 存入变量时限2s</p>
+</li>
+<li><p>read -d “:” var : “:”作为输入的终结</p>
+</li>
+</ul>
+<h3 id="循环">循环</h3>
+<pre><code> <span class="keyword">while</span> <span class="keyword">condition</span>
+
+<span class="keyword">do</span>
+
+   command1 : 
+</code></pre><p>true 等价与 “:”  但是”:”更快</p>
+<pre><code>   command2
+   command3
+
+
+<span class="keyword">done</span>
+
+----------------------------
+
+<span class="keyword">for</span> 
+</code></pre><p>var in $list;</p>
+<pre><code><span class="keyword">do</span>
+
+    command1
+
+<span class="keyword">done</span>
+</code></pre><h3 id="字段分隔符文本处理">字段分隔符文本处理</h3>
+<p>oldIFS=$IFS</p>
+<p>IFS=,ASD,</p>
+<p>for var in $data </p>
+<p>do </p>
+<p>echo $var</p>
+<p>done ### 比较和测试<br>   if [ condition ]<br>   then<br>       command1<br>   else<br>       command2<br>   fi</p>
+<h4 id="算术比较:_num1_–eq_num2_:_如果num1等于_num2，测试结果为0">算术比较:    num1 –eq num2 : 如果num1等于 num2，测试结果为0</h4>
+<p>   num1 –ge num2 : 如果num1大于或等于 num2，测试结果为0<br>   num1 –gt num2 : 如果num1大于 num2，测试结果为0<br>   num1 –le num2 : 如果num1小于或等于 num2，测试结果为0<br>   num1 –lt  num2 : 如果num1小于 num2，测试结果为0<br>   num1 –ne num2 : 如果num1不等于 num2，测试结果为0</p>
+<h4 id="字符串比较:_[string]_:_测试字符串string是否不为空">字符串比较:    [string] : 测试字符串string是否不为空</h4>
+<p>   [-n string] : 测试字符串string是否不为空<br>   [-z string] : 测试字符串string是否为空<br>   [string1=string2] : 测试字符串string1是否与字符串string2相同<br>   [string1!=string2] : 测试字符串string1是否与字符串string2不相同</p>
+<h4 id="文件操作比较:_-d_file_:_测试file是否为目录_-e_file_:_测试file是否存在">文件操作比较:    -d file : 测试file是否为目录    -e file : 测试file是否存在</h4>
+<p>   -f file : 测试file是否为普通文件<br>   -r file : 测试file是否是进程可读文件<br>   -s file : 测试的长度是否不为0<br>   -w file : 测试file是否是进程可写文件<br>   -x file : 测试file是否是进程可执行文件<br>   -L file : 测试file是否为符号化链接</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:47.000Z"><a href="/2014/04/14/Django 构建一个Blog/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/Django 构建一个Blog/">Django 构建一个Blog</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>Django 构建一个Blog</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div><font face="Monaco" style="font-size: 14px;">创建项目mysite：<br/></font></div><br><font face="Monaco" style="font-size: 14px;">python /Library/Frameworks/Python.framework/Versions/2.7/\</font><br><div><font face="Monaco" style="font-size: 14px;">lib/python2.7/site-packages/Django-1.7a2-py2.7.egg/django/bin/django-admin.py startproject mysite  </font></div><br><div><font face="Monaco" style="font-size: 14px;"><br/></font></div><br><div><font face="Monaco" style="font-size: 14px;"><font>运行web</font>服务器：</font></div><br><div><font face="Monaco" style="font-size: 14px;">python manage.py runserver<br/></font></div><br><div><font face="Monaco" style="font-size: 14px;"><br/></font></div><br><div><font face="Monaco" style="font-size: 14px;">���建blog应用：</font></div><br><div><font face="Monaco" style="font-size: 14px;"><font>python </font>manage.py startapp blog</font></div><br><div><font face="Monaco" style="font-size: 14px;"><br/></font></div><br><div><font face="Monaco" style="font-size: 14px;">在setting.py中添加 blog 和 数据库：</font></div><br><font face="Monaco" style="font-size: 14px;">INSTALLED_APPS = (</font><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.admin’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.auth’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.contenttypes’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.sessions’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.messages’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    ‘django.contrib.staticfiles’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">     ‘blog’,)<font><br/></font></font></div><br><font face="Monaco" style="font-size: 14px;">DATABASES = {</font><br><div><font face="Monaco" style="font-size: 14px;">    ‘default’: {</font></div><br><div><font face="Monaco" style="font-size: 14px;">        ‘ENGINE’: ‘django.db.backends.sqlite3’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">        ‘NAME’: ‘/Users/adore/Documents/mysite/data.dbf’,</font></div><br><div><font face="Monaco" style="font-size: 14px;">    }<font><br/></font></font></div><br><div><font face="Monaco" style="font-size: 14px;"><br/></font></div><br><div><font face="Monaco" style="font-size: 14px;">在blog/medels.py中添加：</font></div><br><font face="Monaco" style="font-size: 14px;">from django.db import models</font><br><div><font face="Monaco" style="font-size: 14px;">from django.contrib import admin</font></div><br><div><font face="Monaco" style="font-size: 14px;">class BlogPost(models.Model):</font></div><br><div><font face="Monaco" style="font-size: 14px;">     title = models.CharField(max_length = 150)</font></div><br><div><font face="Monaco" style="font-size: 14px;">     body = models.TextField()</font></div><br><div><font face="Monaco" style="font-size: 14px;">     models.DateTimeField(auto_now_add=True)</font></div><br><div><font face="Monaco" style="font-size: 14px;">admin.site.register(BlogPost)</font></div><br><div><font face="Monaco"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Monaco"><span style="font-size: 14px;">同步数据库：</span></font></div><br><div><span style="font-family: Monaco; font-size: 14px;">python manage.py syncdb</span><font face="Monaco"><span style="font-size: 14px;"><br/></span></font></div><br><div><span style="font-family: Monaco; font-size: 14px;"><br/></span></div><br><div><span style="font-family: Monaco; font-size: 14px;"> m<span style="-evernote-last-insertion-point:true;"/></span></div><br><div><span style="font-family: Monaco; font-size: 14px;"><br/></span></div><br><div><span style="font-family: Monaco; font-size: 14px;"><br/></span></div><br><div><span style="font-family: Monaco; font-size: 14px;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/2/" class="alignleft prev">上一页</a>
+  
+  
+    <a href="/page/4/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

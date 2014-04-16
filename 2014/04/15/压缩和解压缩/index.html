@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>压缩和解压缩 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="压缩和解压缩"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-15T04:41:24.000Z"><a href="/2014/04/15/压缩和解压缩/">4月 15 2014</a></time>
+      
+      
+  
+    <h1 class="title">压缩和解压缩</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="zip归档和压缩">zip归档和压缩</h3>
+<p>zip -r file.zip file1 file2 file3 … : zip压缩文件,-r递归</p>
+<p>unzip file.zip : 解压缩</p>
+<h3 id="tar归档">tar归档</h3>
+<ul>
+<li>tar -xzvf target.tar.gz : 解压gz</li>
+<li>tar -xjvf target.tar.bz : 解压bz</li>
+</ul>
+<ul>
+<li><p>tar -cf target file1 file2 file3 … : 对文件进行归档,c表示创建文件</p>
+</li>
+<li><p>tar -tf target : 显示归档文件,f指定文件名</p>
+</li>
+<li><p>tar -tvf target : 显示归档中详细的文件</p>
+</li>
+<li><p>tar -rvf target filen … : 追加文件filen,并显示详细信息</p>
+</li>
+<li><p>tar -rf target filen … : 追加文件filen</p>
+</li>
+<li><p>tar -xf target : 从归档中提取文件或者文件夹</p>
+</li>
+<li><p>tar -Af target1 target2 : 合并归档</p>
+</li>
+<li><p>tar -ruf target filen : 追加文件当同名文件时间戳较新时才添加</p>
+</li>
+<li><p>tar -cf —exclude “*.txt” target : 排除某些文件</p>
+</li>
+</ul>
+<hr>
+<p><div class="bct fc05 fc11 nbw-blog ztag"><br>概览<br>tar [-cxtzjvfpPN] target.tar.gz 文件与目录 ….<br><br>参数：<br>-c ：建立一个压缩文件的参数指令(create的意思)<br>-x ：解开一个压缩文件的参数指令<br>-t ：查看tarfile里面的文件<br>这三个一定会选一个。特别注意，在参数中，c/x/t只能同时出现一个，因为不可能同时压缩与解压缩。<br><br>-z ：处理gzip压缩包<br>-j ：处理bzip2压缩包<br>-v ：压缩的过程中显示文件，打印详细信息，不建议用在背景执行过程<br>-f ：使用的压缩文件名，请留意，在f之后要立即接档名，不要再加参数<br>错误：『 tar -zcvfP tfile sfile』<br>正确：『 tar -zcvPf tfile sfile』<br><br>-C ：改变当前路径<br>-p ：使用原文件的原来属性（属性不会依据使用者而变）<br>-P ：可以使用绝对路径来压缩<br>-N ：比后面接的日期(yyyy/mm/dd)还要新的才会被打包进新建的文件中<br>—exclude FILE：在压缩的过程中，不要将FILE打包<br><br><br>实例：<br>1，打包+压缩<br><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp;[root@linux ~]# tar -cvf target.tar aa bb<br>&nbsp;# 打包&nbsp; aa bb =&gt; target.tar</span></span><br><span style="font-size: 10pt;"><span style="font-family: 宋体;"><br>&nbsp;[root@linux ~]# tar -czvf target.tar.gz aa bb<br>&nbsp;#打包+压缩&nbsp; aa bb =&gt; target.tar.gz<br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;"><br>&nbsp;[root@linux ~]# tar -czvf target.tar.gz cc_dir<br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp;#打包+压缩&nbsp; cc_dir下得所有内容 =&gt; target.tar.gz</span></span><br><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp;#同时会保留cc_dir的目录结构</span></span><br><br>2，解压<br><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp;[root@linux ~]# tar -xzvf target.tar.gz<br>&nbsp;[root@linux ~]# tar -xjvf target.tar.bz<br>&nbsp; #解压</span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;">target.tar.gz的内容到当前文件夹<br><br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp;[root@linux ~]# tar -xzvf target.tar.gz -C ./cc_dir<br>&nbsp;# 进入cc_dir<br>&nbsp;# 解压</span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;">target.tar.gz的内容到当前文件夹<br>&nbsp;# 等价于：<br>&nbsp;# cd ./cc_dir<br>&nbsp;# tar -xzvf ../target.tar.gz<br><br>3，查看压缩包内容<br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;"><div>&nbsp;[root@linux ~]# tar -ztvf target.tar.gz</div> <div>&nbsp;# 由于我们使用gzip压缩，所以要查阅该tar file内的文件时，</div> <div>&nbsp;# 就得要加上z这个参数了，否则会很慢</div></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;"><br>4，解压指定文件<br>&nbsp;a. 首先查看压缩包内容：<br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp; [root@linux ~]# tar -ztvf target.tar.gz<br>&nbsp; # 假如看到:<br>&nbsp; # cc_dir/aa<br>&nbsp; # cc_dir/bb<br>&nbsp;b. 解压指定文件<br></span></span><span style="font-size: 10pt;"><span style="font-family: 宋体;"><div>&nbsp; [root@linux tmp]# tar -zxvf target.tar.gz cc_dir/aa</div> <div><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp; </span></span># 只解压<span style="font-size: 10pt;"><span style="font-family: 宋体;">cc_dir/aa</span></span></div> <div><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp; </span></span># 如果含有根目录，例如/usr/local/xxx，解压时/被拿掉<br><span style="font-size: 10pt;"><span style="font-family: 宋体;">&nbsp; </span></span># 在当前路径下创建usr/local/xxx<br></div></span></span></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/shell/">shell</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/shell/">shell</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

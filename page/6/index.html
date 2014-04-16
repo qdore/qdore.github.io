@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 6 页 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/for auto decltype toupper/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/for auto decltype toupper/">for auto decltype toupper</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>for auto decltype toupper</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><span style="-evernote-last-insertion-point:true;"/>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iterator&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/><br>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iostream&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main()<br/><br>{<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">char</span> <span style="font-size: 14px; font-family: Menlo;">a[]=</span><span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;woxianzaiyoudianshi&quot;</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">for</span> <span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">auto</span><span style="font-size: 14px; font-family: Menlo;">&amp; b : a){<br/><br>        b =</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">toupper</span><span style="font-size: 14px; font-family: Menlo;">(b);<br/><br>    }<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span><span style="font-size: 14px; font-family: Menlo;">&lt;&lt;a&lt;&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>}</span><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/default 与 delete/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/default 与 delete/">default 与 delete</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>default 与 delete</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br>class A<br><div>{</div><br><div>     A(A&amp; a) = default;                         </div><br><div>     A&amp; operator=(A&amp; a) = delete;</div><br><div>}<span style="-evernote-last-insertion-point:true;"/></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/随机数 random/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/随机��� random/">随机数 random</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <html><head><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><title>随机数 random</title><br><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{<br><br><br>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style><br></head><body><div><div><div><div><div style="font-size: 14px;"><font class="Apple-style-span" color="#78492a" face="Menlo"><div>#include &lt;random&gt;</div><div>#include &lt;iostream&gt;</div><div>using namespace std;</div><div>int main()</div><div><br/></div><div>{</div><div>&nbsp; &nbsp; random_device rd;</div><div>&nbsp; &nbsp; uniform_int_distribution&lt;int&gt; u(0, 9); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//其它分布如正态分布</div><div>&nbsp; &nbsp; default_random_engine e(rd()); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//normal_distribution&lt;&gt;,0-1分布 bernoulli_distribution b(0.5) 0.5表示为1的概率</div><div>&nbsp; &nbsp; for(int i = 1; i &lt; 10; i++)</div><div>&nbsp; &nbsp; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; cout &lt;&lt; u(e) &lt;&lt; endl;</div><div>&nbsp; &nbsp; }</div><div>&nbsp; &nbsp;&nbsp;</div><div>&nbsp; &nbsp; default_random_engine e1(2), e2(2); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //种子相同时，序列也相同！</div><div>&nbsp; &nbsp; for(int i = 1; i &lt; 10; i++)</div><div>&nbsp; &nbsp; {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; cout &lt;&lt; e1() &lt;&lt; &quot;:&quot; &lt;&lt; e2() &lt;&lt; endl;</div><div>&nbsp; &nbsp; }</div><div>}</div></font></div></div></div></div></div></body></html>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/cin get getline/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/cin get getline/">cin get getline</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>cin.get cin.getline</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><span style="-evernote-last-insertion-point:true;"/>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iostream&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main(){<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">char</span> <span style="font-size: 14px; font-family: Menlo;">a[</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">100</span><span style="font-size: 14px; font-family: Menlo;">];<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cin</span><span style="font-size: 14px; font-family: Menlo;">.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">get</span><span style="font-size: 14px; font-family: Menlo;">(a,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">100</span><span style="font-size: 14px; font-family: Menlo;">,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);">EOF</span><span style="font-size: 14px; font-family: Menlo;">);<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span><span style="font-size: 14px; font-family: Menlo;">&lt;&lt;a;<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cin</span><span style="font-size: 14px; font-family: Menlo;">.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">getline</span><span style="font-size: 14px; font-family: Menlo;">(a,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">100</span><span style="font-size: 14px; font-family: Menlo;">);<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span><span style="font-size: 14px; font-family: Menlo;">&lt;&lt;a;<br/><br>}</span><br/><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/build/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/build/">build</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/bitset/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/bitset/">bitset</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>bitset</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);"><span style="-evernote-last-insertion-point:true;"/>bitset</span><span style="font-size: 14px; font-family: Menlo;">&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">&gt; b(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">);            </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">初始化</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">bitset</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">any</span><span style="font-size: 14px; font-family: Menlo;">();                   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">是否存在置位的进制位</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">all</span><span style="font-size: 14px; font-family: Menlo;">();                   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">所有的位是否都置位了</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">none</span><span style="font-size: 14px; font-family: Menlo;">();                  </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">不存在置位的进制位码</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">count</span><span style="font-size: 14px; font-family: Menlo;">();                 </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">置位的个数</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">size</span><span style="font-size: 14px; font-family: Menlo;">();                  </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//b</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">的位数</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">test</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">);                 </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">第</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">2</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">位是否为</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">1</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">set</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: Menlo;">);                </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">设置第二位为</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">1</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">reset</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">);                </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">重置第二位</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">reset</span><span style="font-size: 14px; font-family: Menlo;">();                 </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">重置所有位</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b[</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: Menlo;">];                      </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">访问第二个</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">to_ulong</span><span style="font-size: 14px; font-family: Menlo;">();              </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">转变类型</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">to_ullong</span><span style="font-size: 14px; font-family: Menlo;">();<br/><br>b.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">to_string</span><span style="font-size: 14px; font-family: Menlo;">();</span><br/><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/bind/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/bind/">bind</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>bind</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><span style="-evernote-last-insertion-point:true;"/>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iterator&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/><br>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iostream&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo;"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">add(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">a,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">b,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">c){<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">return</span> <span style="font-size: 14px; font-family: Menlo;">a + b + c;<br/><br>}<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main(){<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">function</span><span style="font-size: 14px; font-family: Menlo;">&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">)&gt; g =</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">bind</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(49, 89, 93);">add</span><span style="font-size: 14px; font-family: Menlo;">,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">placeholders</span><span style="font-size: 14px; font-family: Menlo;">::</span><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">_1</span><span style="font-size: 14px; font-family: Menlo;">,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">);<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span><span style="font-size: 14px; font-family: Menlo;">&lt;&lt;g(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">4</span><span style="font-size: 14px; font-family: Menlo;">);<br/><br>}</span><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/begin end/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/14/begin end/">begin end</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>begin end</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);">#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iterator&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main()<br/><br>{<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">char</span> <span style="font-size: 14px; font-family: Menlo;">a[] =</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;woxianzaiyoudianshi&quot;</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">char</span> <span style="font-size: 14px; font-family: Menlo;"><em>b =</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">begin</span><span style="font-size: 14px; font-family: Menlo;">(a);                                    </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">指向</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">a</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">首元素的指针</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">char</span> <span style="font-size: 14px; font-family: Menlo;"></em>c =</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">end</span><span style="font-size: 14px; font-family: Menlo;">(a);<br/><br>}</span><br><hr/><br><div><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);">#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iterator&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/><br>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;vector&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main(){<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">a[] = {</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">0</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">4</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">5</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">3</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">5</span><span style="font-size: 14px; font-family: Menlo;">,};                              <br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">vector</span><span style="font-size: 14px; font-family: Menlo;">&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt; b(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">begin</span><span style="font-size: 14px; font-family: Menlo;">(a),</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">end</span><span style="font-size: 14px; font-family: Menlo;">(a));                         </span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span><span style="font-size: 14px; color: rgb(0, 132, 0);"><font face="Heiti SC Light">初始化vector<span style="-evernote-last-insertion-point:true;"/></font></span><span style="font-size: 14px; font-family: Menlo;"><br/><br>}</span><span style="font-size: 14px; font-family: Menlo;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/5/" class="alignleft prev">上一页</a>
+  
+  
+    <a href="/page/7/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>线程和互斥量 C++11支持 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="线程和互斥量 C++11支持"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:27.000Z"><a href="/2014/04/14/线程和互斥量 C++11支持/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">线程和互斥量 C++11支持</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>线程和互斥量 C++11支持</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div><font face="Menlo" style="font-size: 14px;">class mutex{</font><span style="color: rgb(209, 47, 27); font-family: Menlo; font-size: 14px;">&lt;boost/thread/thread.hpp&gt; namespace boost;             //C++11支持</span></div><br><div><font face="Menlo"><span style="font-size: 14px;">     void lock();                                                  //锁定</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     void unlock();                                                //解锁,阻塞函数</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool try_lock();                                              //尝试锁定，成功返回1</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool try_lock_for(chrono::duration&amp; time);                    //限时锁定，相对时间</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool try_lock_until(chrono::time_point&amp; t);                   //限时锁定，绝对时间</span></font></div><br><span style="font-size: 14px; font-family: Menlo;">}</span><br><div><font face="Menlo"><span style="font-size: 14px;">mutex::scoped_lock lock(mutex);可以在析构时自动解锁，避免try-catch块</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font><br><div><font face="Menlo" style="font-size: 14px;">互斥量种类：</font><br><div><font face="Menlo" style="font-size: 14px;">mutex                          : 独占式的互斥量</font></div><br><div><span style="font-size: 14px;"><font face="Menlo">timed_mutex                    : </font><font face="Menlo">带超时锁定</font><span style="font-family: Menlo;">独占式的互斥量</span></span></div><br><div><font face="Menlo" style="font-size: 14px;">recursive_mutex                : 递归式的互斥量,允许同一个线程多次lock</font></div><br><div><span style="font-size: 14px;"><font face="Menlo">recursive_timed_mutex          : </font><font face="Menlo">带超时锁定</font><span style="font-family: Menlo;">递归式的互斥量</span></span></div><br><div><font face="Menlo" style="font-size: 14px;">shared_mutex                   : 共享互斥量</font><br><hr/><br><font face="Menlo" style="font-size: 14px;">class thread{</font><span style="color: rgb(209, 47, 27); font-family: Menlo; font-size: 14px;">&lt;boost/thread/thread.hpp&gt; namespace boost;             //</span><span style="color: rgb(209, 47, 27); font-family: Menlo; font-size: 14px;">C++11支持#include &lt;thread&gt;</span></div><br></div><br></div><br><div><font face="Menlo"><span style="font-size: 14px;">     thread(F f,A1 a1,A2 a2,…);                                     //构造函数和转移</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     thread(thread&amp; thread);</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     thread&amp; operator=(thread th);</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     </span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool joinable();                                               //是否是一个可执行的线程体</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     void join();                                                   //一直阻塞等待，知道线程结束</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool try_join_for(</span></font><span style="font-family: Menlo; font-size: 14px;">chrono::duration&amp; time)</span><span style="font-size: 14px; font-family: Menlo;">;                     //限时阻塞等待</span></div><br><div><font face="Menlo"><span style="font-size: 14px;">     bool try_join_until(</span></font><span style="font-family: Menlo; font-size: 14px;">chrono::time_point&amp; t)</span><span style="font-size: 14px; font-family: Menlo;">;</span></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     void detach();                                                 //分离线程</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     void interrupt();                                              //终端线程</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     id get_id();                                                   //获得线程ID</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     native_handle_type native_handle();                            //获得线程的handle</span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;"><br/></span></font></div><br><div><font face="Menlo"><span style="font-size: 14px;">     static unsigned hardware_concurrency();                        //获得并发数</span></font></div><br><div><font face="Menlo" style="font-size: 14px;"><br/></font></div><br><div><font face="Menlo" style="font-size: 14px;">}</font><br><hr/></div><br><div><font face="Menlo" style="font-size: 14px;">class condition_variable_any{                                       <font color="#FF2600">//条件变量来保证线程之间有序执行</font></font></div><br><div><font face="Menlo" style="font-size: 14px;">     void notify_one();                                             //通知一个等待中的线程</font></div><br><div><font face="Menlo" style="font-size: 14px;"><br/></font></div><br><div><font face="Menlo" style="font-size: 14px;">     void wait(mutex&amp; mu);                                          //必须是lock状态的互斥量被锁定</font></div><br><div><font face="Menlo" style="font-size: 14px;">     </font></div><br><div><span style="font-family: Menlo; font-size: 14px;">     void notify_all();</span><font face="Menlo" style="font-size: 14px;"><br/></font></div><br><div><font face="Menlo" style="font-size: 14px;">     cv_status wait_for(mutex&amp; mu,</font><span style="font-family: Menlo; font-size: 14px;">chrono::duration&amp; time);</span></div><br><div><font face="Menlo" style="font-size: 14px;">     </font><span style="font-family: Menlo; font-size: 14px;">cv_status wait_until(mutex&amp; mu,</span><span style="font-family: Menlo; font-size: 14px;">chrono::time_point&amp; t);</span><span style="font-family: Menlo; font-size: 14px;"> </span></div><br><div><span style="font-family: Menlo; font-size: 14px;">     void wait(mutex&amp; mu,predicate_type predicate);                 //条件等待</span></div><br><div><font face="Menlo" style="font-size: 14px;">}</font><br><hr/><br><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">使用future对象取得线程返回值：</span></div><br><div><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">fab</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">n</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">）</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span> <span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">递归策画斐波那契数列</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>{<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">if</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">n ==</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">0</span> <span style="font-size: 14px; font-family: Menlo;">|| n ==</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">）</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">return</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>       </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">return</span> <span style="font-size: 14px; font-family: Menlo;">fab</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">n -</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">）</span> <span style="font-size: 14px; font-family: Menlo;">+ fab</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">n -</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">）</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>}<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（）</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>{<br/><br>    packaged_task&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt; pt</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">bind</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">fab</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">，</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">10</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">））</span><span style="font-size: 14px; font-family: Menlo;">;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span> <span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">声明</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">packaged_task</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">对象，用模板参数指明返回值的类型，</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">packaged_task</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">只接管无参函数，是以须要应用</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">bind</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    unique_future&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt; uf = pt.get_future</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（）</span><span style="font-size: 14px; font-family: Menlo;">;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span> <span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">声明</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">unique_future</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">对象，接管</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">packaged_task</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">的</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">future</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">值，同样要用模板参数指明返回值类型</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    thread</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">boost::move</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">pt</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">））</span><span style="font-size: 14px; font-family: Menlo;">;                </span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span> <span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">启动线程策画，必须应用</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">boost::move</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">（）来转移</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">packaged_task</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">对象，因为</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">packaged_task</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">是不成拷贝的</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    uf.wait</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（）</span><span style="font-size: 14px; font-family: Menlo;">;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">// unique_future</span><span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">守候策画成果</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    assert</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（</span><span style="font-size: 14px; font-family: Menlo;">uf.is_ready</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（）</span> <span style="font-size: 14px; font-family: Menlo;">&amp;&amp; uf.has_value</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（））</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br>    cout &lt;&lt; uf.get</span><span style="font-size: 14px; font-family: 'Heiti SC Light';">（）</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt; endl;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">//</span> <span style="font-size: 14px; font-family: 'Heiti SC Light'; color: rgb(0, 132, 0);">输出策画成果</span><span style="font-size: 14px; font-family: Menlo; color: rgb(0, 132, 0);">89</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>}</span></div><br><div><br><hr/></div><br><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main(){<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">typedef</span> <span style="font-size: 14px; font-family: Menlo;">packaged_task&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt; pti_t;<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">typedef</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">unique_future</span><span style="font-size: 14px; font-family: Menlo;">&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt; fi_t;<br/><br>    boost::array&lt;pti_t,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">5</span><span style="font-size: 14px; font-family: Menlo;">&gt; ap;<br/><br>    boost::array&lt;fi_t,</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">5</span><span style="font-size: 14px; font-family: Menlo;">&gt; au;<br/><br>   </span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">for</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">i=</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">0</span><span style="font-size: 14px; font-family: Menlo;">;i&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">5</span><span style="font-size: 14px; font-family: Menlo;">;++i){<br/><br>        ap[i]=pti_t(boost::bind(fab,i+</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">10</span><span style="font-size: 14px; font-family: Menlo;">));<br/><br>        au[i]=ap[i].get_future();<br/><br>        thread(boost::move(ap[i]));<br/><br>    }<br/><br>    wait_for_all(au.begin(),au.end());               :</span>      <span style="font-size: 14px; font-family: Menlo;">wait_for_any(au[</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">1</span><span style="font-size: 14px; font-family: Menlo;">],au[</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">]);</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    BOOST_FOREACH(unique_future&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt;&amp; f,au){         :</span>      <span style="font-size: 14px; font-family: Menlo;">BOOST_FOREACH(unique_future&lt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span><span style="font-size: 14px; font-family: Menlo;">&gt;&amp; f,au){</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>        cout&lt;&lt;f.get()&lt;&lt;endl;                         :</span>      <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">if</span><span style="font-size: 14px; font-family: Menlo;">(f.is_ready()&amp;&amp;f.has_value()) cout&lt;&lt;f.get()&lt;&lt;endl;</span><span style="font-size: 14px; font-family: Menlo;"><br/><br>    }                                                :<span style="-evernote-last-insertion-point:true;"/>   }<br/><br>    std::system(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;pause&quot;</span><span style="font-size: 14px; font-family: Menlo;">);<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">return</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">0</span><span style="font-size: 14px; font-family: Menlo;">;<br/></span><br><div><span style="font-family: Menlo; font-size: 14px;">}</span><span style="font-size: 14px; font-family: Menlo;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/boost/">boost</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/boost/">boost</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

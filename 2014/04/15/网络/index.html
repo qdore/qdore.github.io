@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>网络 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="网络"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-15T04:41:24.000Z"><a href="/2014/04/15/网络/">4月 15 2014</a></time>
+      
+      
+  
+    <h1 class="title">网络</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="IP配置(iwconfig更改无线网络参数)">IP配置(iwconfig更改无线网络参数)</h3>
+<ul>
+<li><p>ifconfig en0 : 列出详细配置</p>
+</li>
+<li><p>ifconfig en0 192.168.1.123 netmask 255.255.255.0 broadcast 192.168.1.255 : 设置ip,掩码和广播域</p>
+</li>
+<li><p>ifconfig en0 ether 60:03:08:91:d8:58 : 设置mac地址</p>
+</li>
+</ul>
+<h3 id="DNS查找">DNS查找</h3>
+<ul>
+<li><p>host www.baidu.com  : 列出域名的IP地址</p>
+</li>
+<li><p>nslookup www.baidu.com  : 列出dns资源记录</p>
+</li>
+<li><p>netstat -r : 路由表(route)</p>
+</li>
+</ul>
+<h3 id="使用ping和traceroute">使用ping和traceroute</h3>
+<ul>
+<li><p>ping -c 2 IP : 指定传送2个包</p>
+</li>
+<li><p>traceroute IP : 追踪路由</p>
+</li>
+</ul>
+<h3 id="SSH登录">SSH登录</h3>
+<ul>
+<li><p>ssh user@HOST : ssh登录</p>
+</li>
+<li><p>ssh -p 422 user@IP : 指定端口422</p>
+</li>
+<li><p>ssh user@host &#39;COMMANDS&#39; : 远程计算机执行命令</p>
+</li>
+<li><p>ssh -C user@host &#39;COMMANDS&#39; : -C压缩传输</p>
+</li>
+<li><p>ssh -X user@host &#39;COMMANDS&#39; : -X启动图形化输出</p>
+</li>
+<li><p>ssh-keygen -t rsa : 创建ssh密钥 公钥需要放入远程服务器的~/.ssh/authotized_keys</p>
+</li>
+</ul>
+<h3 id="SSH端口转发">SSH端口转发</h3>
+<ul>
+<li><p>ssh -L 8000:host2:80 user@host1 : 讲host1的8000端口转发到host2的80端口</p>
+</li>
+<li><p>ssh -fL 8000:host2:80 user@host1 : -f参数指定ssh执行命令时转入后台运行</p>
+</li>
+<li><p>ssh -R 8000:localhost:80 user@host : 反向转发远程主机的8000端口到80端口上</p>
+</li>
+<li><p>sshfs -o allow_other user@host:/home/path  PATH : 挂载远程主机的目录</p>
+</li>
+<li><p>umount PATH : 卸载远程主机</p>
+</li>
+</ul>
+<h3 id="网络流量与端口分析">网络流量与端口分析</h3>
+<ul>
+<li><p>lsof -i : 列出系统当前开放的端口以及运行在端口的详细信息</p>
+</li>
+<li><p>netstat -tnp : 列出开放端口与服务</p>
+</li>
+</ul>
+<h3 id="创建套接字">创建套接字</h3>
+<ul>
+<li><p>nc -l 8080 : 设置侦听套接字(接收数据)</p>
+</li>
+<li><p>nc HOST 8080 : 连接到套接字(发送数据)</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/shell/">shell</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/shell/">shell</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

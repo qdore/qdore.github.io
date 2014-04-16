@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SQL DML语句 插入 删除 修改 事务 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="SQL DML语句 插入 删除 修改 事务"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/SQL DML语句 插入 删除 修改 事务/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">SQL DML语句 插入 删除 修改 事务</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>SQL DML语句 插入 删除 修改 事务</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>1、 insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> 插入语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jack’, 25);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>主键自增可以不插入，所以用null代替<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>指定列 <span style="-evernote-last-insertion-point:true;"/><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp(name, age) <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(‘jack’, 22);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>在表面后面带括号，括号中写列名，values中写指定列名的值即可。当省略列名就表示插入全部数据，<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>注意插入值的顺序和列的顺序需要保持一致。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>Set方式插入，也可以指定列<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> id = 7, name = <span style="word-wrap: normal; word-break: normal; color: rgb(0, 96, 128);">‘jason’</span>;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>MySQL中外键���table的外键引用列可以插入数据可以为null，不参照主表的数据。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>使用子查询插入数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp(name) <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">select</span> name <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> classes;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>多行插入<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>insert <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">into</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">values</span>(<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jack’, 22), (<span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">null</span>, ‘jackson’ 23);</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><hr/><br><pre><br>2、 <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> 修改语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>update主要完成对数据的修改操作，可以修改一条或多条数据。修改多条或指定条件的数据，需要用where条件来完成。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>修改所有数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack2’;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>所有的数据的name会被修改，如果修改多列用“,”分开<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack’, age = 22;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>修改指定条件的记录需要用where<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">update</span> temp <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">set</span> name = ‘jack’ <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">where</span> age &gt; 22;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br></pre><br><hr/><br><pre><br>3、 <font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> 删除语句</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除table中的数据，可以删除所有，带条件可以删除指定的记录。<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除所有数据<br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; background-color: rgb(244, 244, 244); border-style: none; padding: 0px; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br><font face="Courier New" style="word-wrap: normal; word-break: normal; line-height: 20px;"><span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> <span style="word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> temp;</font><br></pre><br><pre style="white-space: normal; font-size: 10pt; line-height: 12pt; text-align: left; border-style: none; padding: 0px; background-color: white; font-family: 'Courier new', courier, monospace; direction: ltr; overflow: visible;"><br>删除指定条件数据<br></pre><br><span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">delete</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">from</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left;">temp</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left; word-wrap: normal; word-break: normal; color: rgb(0, 0, 255);">where</span> <span style="line-height: 20px; font-family: 'Courier New'; background-color: rgb(244, 244, 244); font-size: 10pt; text-align: left;">age &gt; 20;</span><br><div><br><hr/><br><div><br><ul><br><li><span style="font-size: 14px;">commit; 提交事务                                             //</span><span style="font-family: 'Courier New'; font-size: 13px; line-height: 20px; text-align: left; background-color: rgb(244, 244, 244);">DDL DCL隐形提交 DDL不支持回滚 DML需要commit</span><br/></li><br><li><span style="font-size: 14px;">rollback;</span><br/></li><br><li><span style="font-size: 14px;">savepoint 保存点;</span><br/></li><br><li><span style="font-size: 14px;">rollback to 保存点;</span><br/></li><br></ul><br><div><br><hr/><br><br/></div><br></div><br></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/SQL/">SQL</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SQL/">SQL</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

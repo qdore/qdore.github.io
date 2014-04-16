@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>正则表达式 regex | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="正则表达式 regex"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:34.000Z"><a href="/2014/04/14/正则表达式 regex/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">正则表达式 regex</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <html><head><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><title>正则表达式 regex</title><br><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{<br><br><br>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style><br></head><body><div><span style="-evernote-last-insertion-point:true;"><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);">#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;iostream&gt;</span><br/></span></div><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);">#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;bitset&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/>#include</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&lt;regex&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(120, 73, 42);"><br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">using</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">namespace</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">std</span><span style="font-size: 14px; font-family: Menlo;">;<br/></span><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">int</span> <span style="font-size: 14px; font-family: Menlo;">main()<br/>{<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">string</span> <span style="font-size: 14px; font-family: Menlo;">s(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;1wo0oooo31wo0ooo31wo0oo3&quot;</span><span style="font-size: 14px; font-family: Menlo;">);<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">smatch</span> <span style="font-size: 14px; font-family: Menlo;">match;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">regex</span> <span style="font-size: 14px; font-family: Menlo;">reg(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">string</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;wo0o<em>&quot;</span><span style="font-size: 14px; font-family: Menlo;">));<br/>&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">regex_match</span><span style="font-size: 14px; font-family: Menlo;">(s, reg) &lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">regex_search</span><span style="font-size: 14px; font-family: Menlo;">(s, match, reg) &lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt; match.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">str</span><span style="font-size: 14px; font-family: Menlo;">() &lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/>&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">for</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">sregex_iterator</span> <span style="font-size: 14px; font-family: Menlo;">beg(s.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">begin</span><span style="font-size: 14px; font-family: Menlo;">(), s.</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">end</span><span style="font-size: 14px; font-family: Menlo;">(), reg), end; beg != end; beg++)<br/>&nbsp;&nbsp;&nbsp; {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt; beg-&gt;</span><span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">str</span><span style="font-size: 14px; font-family: Menlo;">() &lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/>&nbsp;&nbsp;&nbsp; }<br/>&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">cout</span> <span style="font-size: 14px; font-family: Menlo;">&lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">regex_replace</span><span style="font-size: 14px; font-family: Menlo;">(s, reg,</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">string</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(209, 47, 27);">&quot;ni&quot;</span><span style="font-size: 14px; font-family: Menlo;">)) &lt;&lt;</span> <span style="font-size: 14px; font-family: Menlo; color: rgb(61, 29, 129);">endl</span><span style="font-size: 14px; font-family: Menlo;">;<br/><br/>}<br/></span><p><table width="100%" style="line-height: 15.954544067382813px; border-collapse: collapse; padding: 0px; border: 1px solid rgb(187, 187, 187);"><tbody><tr><th style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; background-color: rgb(237, 237, 237); text-align: left;"><font face="Menlo" style="font-size: 14px;">字符</font></th><th style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; background-color: rgb(237, 237, 237); text-align: left;"><font face="Menlo" style="font-size: 14px;">说明</font></th></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">将下一字符标记为特殊字符、文本、反向引用或八进制转义符。例如，“n”匹配字符“n”。“\n”匹配换行符。序列“\”匹配“\”，“(”匹配“(”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">^</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配输入字符串开始的位置。如果设置了&nbsp;<b>RegExp</b>&nbsp;对象的&nbsp;<b>Multiline</b>&nbsp;属性，^ 还会与“\n”或“\r”之后的位置匹配。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">$</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配输入字符串结尾的位置。如果设置了&nbsp;<b>RegExp</b>&nbsp;对象的&nbsp;<b>Multiline</b>&nbsp;属性，$ 还会与“\n”或“\r”之前的位置匹配。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;"></em></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">零次或多次匹配前面的字符或子表达式。例如，zo<em> 匹配“z”和“zoo”。</em> 等效于 {0,}。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">+</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">一次或多次匹配前面的字符或子表达式。例如，“zo+”与“zo”和“zoo”匹配，但与“z”不匹配。+ 等效于 {1,}。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">?</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">零次或一次匹配前面的字符或子表达式。例如，“do(es)?”匹配“do”或“does”中的“do”。? 等效于 {0,1}。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">{<i>n</i>}</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;"><i>n&nbsp;</i>是非负整数。正好匹配&nbsp;<i>n</i>&nbsp;次。例如，“o{2}”与“Bob”中的“o”不匹配，但与“food”中的两个“o”匹配。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">{<i>n</i>,}</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;"><i>n&nbsp;</i>是非负整数。至少匹配&nbsp;<i>n&nbsp;</i>次。例如，“o{2,}”不匹配“Bob”中的“o”，而匹配“foooood”中的所有 o。“o{1,}”等效于“o+”。“o{0,}”等效于“o<em>”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">{<i>n</i>,<i>m</i>}</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;"><i>M</i>&nbsp;和&nbsp;<i>n</i>&nbsp;是非负整数，其中&nbsp;<i>n</i>&nbsp;&lt;=&nbsp;<i>m</i>。匹配至少&nbsp;<i>n</i>&nbsp;次，至多&nbsp;<i>m</i>&nbsp;次。例如，“o{1,3}”匹配“fooooood”中的头三个 o。&#39;o{0,1}&#39; 等效于 &#39;o?&#39;。注意：您不能将空格插入逗号和数字之间。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">?</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">当此字符紧随任何其他限定符（</em>、+、?、{<i>n</i>}、{<i>n</i>,}、{<i>n</i>,<i>m</i>}）之后时，匹配模式是“非贪心的”。“非贪心的”模式匹配搜索到的、尽可能短的字符串，而默认的“贪心的”模式匹配搜索到的、尽可能长的字符串。例如，在字符串“oooo”中，“o+?”只匹配单个“o”，而“o+”匹配所有“o”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">.</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配除“\n”之外的任何单个字符。若要匹配包括“\n”在内的任意字符，请使用诸如“[\s\S]”之类的模式。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">(<i>pattern</i>)</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>pattern</i>&nbsp;并捕获该匹配的子表达式。可以使用&nbsp;<b>$0…$9</b>&nbsp;属性从结果“匹配”集合中检索捕获的匹配。若要匹配括号字符 ( )，请使用“(”或者“)”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">(?:<i>pattern</i>)</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>pattern</i>&nbsp;但不捕获该匹配的子表达式，即它是一个非捕获匹配，不存储供以后使用的匹配。这对于用“or”字符 (|) 组合模式部件的情况很有用。例如，&#39;industr(?:y|ies) 是比 &#39;industry|industries&#39; 更经济的表达式。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">(?=<i>pattern</i>)&nbsp;</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">执行正向预测先行搜索的子表达式，该表达式匹配处于匹配&nbsp;<i>pattern</i>&nbsp;的字符串的起始点的字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，&#39;Windows (?=95|98|NT|2000)&#39; 匹配“Windows 2000”中的“Windows”，但不匹配“Windows 3.1”中的“Windows”。预测先行不占用字符，即发生匹配后，下一匹配的搜索紧随上一匹配之后，而不是在组成预测先行的字符后。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">(?!<i>pattern</i>)</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">执行反向预测先行搜索的子表达式，该表达式匹配不处于匹配&nbsp;<i>pattern</i>&nbsp;的字符串的起始点的搜索字符串。它是一个非捕获匹配，即不能捕获供以后使用的匹配。例如，&#39;Windows (?!95|98|NT|2000)&#39; 匹配“Windows 3.1”中的 “Windows”，但不匹配“Windows 2000”中的“Windows”。预测先行不占用字符，即发生匹配后，下一匹配的搜索紧随上一匹配之后，而不是在组成预测先行的字符后。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;"><i>x</i>|<i>y</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>x</i>&nbsp;或&nbsp;<i>y</i>。例如，&#39;z|food&#39; 匹配“z”或“food”。&#39;(z|f)ood&#39; 匹配“zood”或“food”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">[<i>xyz</i>]</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">字符集。匹配包含的任一字符。例如，“[abc]”匹配“plain”中的“a”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">[^<i>xyz</i>]</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">反向字符集。匹配未包含的任何字符。例如，“[^abc]”匹配“plain”中的“p”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">[<i>a-z</i>]</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">字符范围。匹配指定范围内的任何字符。例如，“[a-z]”匹配“a”到“z”范围内的任何小写字母。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">[^<i>a-z</i>]</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">反向范围字符。匹配不在指定的范围内的任何字符。例如，“[^a-z]”匹配任何不在“a”到“z”范围内的任何字符。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\b</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配一个字边界，即字与空格间的位置。例如，“er\b”匹配“never”中的“er”，但不匹配“verb”中的“er”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\B</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">非字边界匹配。“er\B”匹配“verb”中的“er”，但不匹配“never”中的“er”。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\c<i>x</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>x</i>&nbsp;指示的控制字符。例如，\cM 匹配 Control-M 或回车符。<i>x</i>&nbsp;的值必须在 A-Z ��� a-z 之间。如果不是这样，则假定 c 就是“c”字符本身。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\d</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">数字字符匹配。等效于 [0-9]。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\D</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">非数字字符匹配。等效于 [^0-9]。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\f</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">换页符匹配。等效于 \x0c 和 \cL。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\n</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">换行符匹配。等效于 \x0a 和 \cJ。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\r</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配一个回车符。等效于 \x0d 和 \cM。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\s</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配任何空白字符，包括空格、制表符、换页符等。与 [&nbsp;\f\n\r\t\v] 等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\S</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配任何非空白字符。与 [^&nbsp;\f\n\r\t\v] 等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\t</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">制表符匹配。与 \x09 和 \cI 等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\v</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">垂直制表符匹配。与 \x0b 和 \cK 等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\w</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配任何字类字符，包括下划线。与“[A-Za-z0-9<em>]”等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\W</font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">与任何非单词字符匹配。与“[^A-Za-z0-9</em>]”等效。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\x<i>n</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>n</i>，此处的&nbsp;<i>n</i>&nbsp;是一个十六进制转义码。十六进制转义码必须正好是两位数长。例如，“\x41”匹配“A”。“\x041”与“\x04”&amp;“1”等效。允许在正则表达式中使用 ASCII 代码。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\<i>num</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>num</i>，此处的&nbsp;<i>num</i>&nbsp;是一个正整数。到捕获匹配的反向引用。例如，“(.)\1”匹配两个连续的相同字符。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\<i>n</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">标识一个八进制转义码或反向引用。如果 \<i>n</i>&nbsp;前面至少有&nbsp;<i>n</i>&nbsp;个捕获子表达式，那么&nbsp;<i>n</i>&nbsp;是反向引用。否则，如果&nbsp;<i>n</i>&nbsp;是八进制数 (0-7)，那么&nbsp;<i>n</i>&nbsp;是八进制转义码。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\<i>nm</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">标识一个八进制转义码或反向引用。如果 \<i>nm</i>&nbsp;前面至少有&nbsp;<i>nm</i>&nbsp;个捕获子表达式，那么&nbsp;<i>nm</i>&nbsp;是反向引用。如果 \<i>nm</i>&nbsp;前面至少有&nbsp;<i>n</i>&nbsp;个捕获，则&nbsp;<i>n</i>&nbsp;是���向引用，后面跟有字符&nbsp;<i>m</i>。如果两种前面的情况都不存在，则 \<i>nm</i>&nbsp;匹配八进制值&nbsp;<i>nm</i>，其中&nbsp;<i>n&nbsp;</i>和&nbsp;<i>m</i>&nbsp;是八进制数字 (0-7)。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\<span style="font-style: italic;">nml</span></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">当&nbsp;<i>n</i>&nbsp;是八进制数 (0-3)，<i>m</i>&nbsp;和&nbsp;<i>l</i>&nbsp;是八进制数 (0-7) 时，匹配八进制转义码&nbsp;<i>nml</i>。</font></p></td></tr><tr><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">\u<i>n</i></font></p></td><td style="border: 1px solid rgb(187, 187, 187); padding: 10px 8px; vertical-align: top;"><p style="padding-bottom: 0px; line-height: 18px;"><font face="Menlo" style="font-size: 14px;">匹配&nbsp;<i>n</i>，其中&nbsp;<i>n</i>&nbsp;是以四位十六进制数表示的 Unicode 字符。例如，\u00A9 匹配版权符号 (©)。&nbsp;</font></p></td></tr></tbody></table></p><p><br/></p><div><br/></div></body></html>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/C++11/">C++11</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/C++11/">C++11</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

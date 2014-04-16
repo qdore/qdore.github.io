@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>布局 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="布局"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:38.000Z"><a href="/2014/04/14/布局/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">布局</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <html><head><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><title>布局</title><br><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{<br><br><br>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style><br></head><body><p><br/></p><meta charset="utf-8"/><div style="margin: 0px 0px 0px 15px; padding: 20px 0px; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(170, 170, 170); border-bottom-color: rgb(170, 170, 170); width: 710px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);"><h2 style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; font-family: 微软雅黑; font-size: 14px;">HTML 布局 - 使用 &lt;div&gt; 元素</h2><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">div 元素是用于分组 HTML 元素的块级元素。</p><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">下面的例子使用五个 div 元素来创建多列布局：</p><h3 style="margin: 20px 0px 0px; padding: 0px; border: 0px; font-weight: bold; font-size: 12px;">实例</h3><pre style="margin: 10px 0px 0px; padding: 10px; border: 1px dotted rgb(119, 136, 85); font-family: &#39;Courier New&#39;, Courier, monospace; width: 685px; background-color: rgb(245, 245, 245); background-position: initial initial; background-repeat: initial initial;">&lt;!DOCTYPE&nbsp;html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;style&nbsp;type=&quot;text/css&quot;&gt;<br>div#container{width:500px}<br>div#header&nbsp;{background-color:#99bbbb;}<br>div#menu&nbsp;{background-color:#ffff99;&nbsp;height:200px;&nbsp;width:100px;&nbsp;float:left;}<br>div#content&nbsp;{background-color:#EEEEEE;&nbsp;height:200px;&nbsp;width:400px;&nbsp;float:left;}<br>div#footer&nbsp;{background-color:#99bbbb;&nbsp;clear:both;&nbsp;text-align:center;}<br>h1&nbsp;{margin-bottom:0;}<br>h2&nbsp;{margin-bottom:0;&nbsp;font-size:14px;}<br>ul&nbsp;{margin:0;}<br>li&nbsp;{list-style:none;}<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div&nbsp;id=&quot;container&quot;&gt;<br>&lt;div&nbsp;id=&quot;header&quot;&gt;<br>&lt;h1&gt;Main&nbsp;Title&nbsp;of&nbsp;Web&nbsp;Page&lt;/h1&gt;<br>&lt;/div&gt;<br>&lt;div&nbsp;id=&quot;menu&quot;&gt;<br>&lt;h2&gt;Menu&lt;/h2&gt;<br>&lt;ul&gt;<br>&lt;li&gt;HTML&lt;/li&gt;<br>&lt;li&gt;CSS&lt;/li&gt;<br>&lt;li&gt;JavaScript&lt;/li&gt;<br>&lt;/ul&gt;<br>&lt;/div&gt;<br>&lt;div&nbsp;id=&quot;content&quot;&gt;Content&nbsp;goes&nbsp;here&lt;/div&gt;<br>&lt;div&nbsp;id=&quot;footer&quot;&gt;Copyright&nbsp;W3School.com.cn&lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;"><a href="http://w3school.com.cn/tiy/t.asp?f=html_layout_divs" style="margin: 0px; padding: 0px; border: 0px; text-decoration: underline; color: rgb(144, 11, 9); background-color: transparent; background-position: initial initial; background-repeat: initial initial;" target="_blank">亲自试一试</a></p><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">上面的 HTML 代码会产生如下结果：</p><img src="http://w3school.com.cn/i/html_layout_div.gif" alt="使用 div 和 CSS 进行布局" style="margin: 25px 0px 0px 25px; padding: 0px; border: 0px;"/></div><div style="margin: 0px 0px 0px 15px; padding: 20px 0px; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(170, 170, 170); border-bottom-color: rgb(170, 170, 170); width: 710px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);"><h2 style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; font-family: 微软雅黑; font-size: 14px;">HTML 布局 - 使用表格</h2><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">使用 HTML &lt;table&gt; 标签是创建布局的一种简单的方式。</p><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">可以使用 &lt;div&gt; 或者 &lt;table&gt; 元素来创建多列。CSS 用于对元素进行定位，或者为页面创建背景以及色彩丰富的外观。</p><p class="tip" style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;"><span style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; color: rgb(255, 153, 85);">提示：</span>即使可以使用 HTML 表格来创建漂亮的布局，但设计表格的目的是呈现表格化数据 - 表格不是布局工具！</p><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">下面的例子使用三行两列的表格 - 第一和最后一行���用 colspan 属性来横跨两列：</p><h3 style="margin: 20px 0px 0px; padding: 0px; border: 0px; font-weight: bold; font-size: 12px;">实例</h3><pre style="margin: 10px 0px 0px; padding: 10px; border: 1px dotted rgb(119, 136, 85); font-family: &#39;Courier New&#39;, Courier, monospace; width: 685px; background-color: rgb(245, 245, 245); background-position: initial initial; background-repeat: initial initial;">&lt;!DOCTYPE&nbsp;html&gt;<br>&lt;html&gt;<br>&lt;body&gt;<br>&lt;table&nbsp;width=&quot;500&quot;&nbsp;border=&quot;0&quot;&gt;<br>&lt;tr&gt;<br>&lt;td&nbsp;colspan=&quot;2&quot;&nbsp;style=&quot;background-color:#99bbbb;&quot;&gt;<br>&lt;h1&gt;Main&nbsp;Title&nbsp;of&nbsp;Web&nbsp;Page&lt;/h1&gt;<br>&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&nbsp;valign=&quot;top&quot;&gt;<br>&lt;td&nbsp;style=&quot;background-color:#ffff99;width:100px;text-align:top;&quot;&gt;<br>&lt;b&gt;Menu&lt;/b&gt;&lt;br&nbsp;/&gt;<br>HTML&lt;br&nbsp;/&gt;<br>CSS&lt;br&nbsp;/&gt;<br>JavaScript<br>&lt;/td&gt;<br>&lt;td&nbsp;style=&quot;background-color:#EEEEEE;height:200px;width:400px;text-align:top;&quot;&gt;<br>Content&nbsp;goes&nbsp;here&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;<br>&lt;td&nbsp;colspan=&quot;2&quot;&nbsp;style=&quot;background-color:#99bbbb;text-align:center;&quot;&gt;<br>Copyright&nbsp;W3School.com.cn&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/table&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;"><a href="http://w3school.com.cn/tiy/t.asp?f=html_layout_tables" style="margin: 0px; padding: 0px; border: 0px; text-decoration: underline; color: rgb(144, 11, 9); background-color: transparent; background-position: initial initial; background-repeat: initial initial;" target="_blank">亲自试一试</a></p><p style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;">上面的 HTML 代码会产生以下结果：</p><img src="http://w3school.com.cn/i/html_layout_table.gif" alt="使用表格进行布局" style="margin: 25px 0px 0px 25px; padding: 0px; border: 0px;"/></div><div style="margin: 0px 0px 0px 15px; padding: 20px 0px; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(170, 170, 170); border-bottom-color: rgb(170, 170, 170); width: 710px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);"><h2 style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; font-family: 微软雅黑; font-size: 14px;">HTML 布局 - 有用的提示</h2><p class="tip" style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;"><span style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; color: rgb(255, 153, 85);">提示：</span>使用 CSS 最大的好处是，如果把 CSS 代码存放到外部样式表中，那么站点会更易于维护。通过编辑单一的文件，就可以改变所有页面的布局。如需学习更多有关 CSS 的知识，请访问我们的&nbsp;<a href="http://w3school.com.cn/css/index.asp" title="CSS 教程" style="margin: 0px; padding: 0px; border: 0px; text-decoration: underline; color: rgb(144, 11, 9); background-color: transparent; background-position: initial initial; background-repeat: initial initial;" target="_blank">CSS 教程</a>。</p><p class="tip" style="margin: 12px 0px 0px; padding: 0px; border: 0px; line-height: 18px;"><span style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; color: rgb(255, 153, 85);">提示：</span>由于创建高级的布局非常耗时，使用模板是一个快速的选项。通过搜索引擎可以找到很多免费的网站模板（您可以使用这些预先构建好的网站布局，并优化它们）。</p></div><div style="margin: 0px 0px 0px 15px; padding: 20px 0px; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(170, 170, 170); border-bottom-color: rgb(170, 170, 170); width: 710px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);"><h2 style="margin: 0px; padding: 0px; border: 0px; font-weight: bold; font-family: 微软雅黑; font-size: 14px;">HTML 布局标签</h2><table class="dataintable" style="margin: 10px 0px 0px; padding: 0px; border: 1px solid rgb(170, 170, 170); border-collapse: collapse; width: 709px;"><tbody style="margin: 0px; padding: 0px; border: 0px;"><tr style="margin: 0px; padding: 0px; border: 0px;"><th style="margin: 0px; padding: 5px 15px 5px 5px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; background-color: rgb(213, 213, 213); text-align: left; width: 156px;">标签</th><th style="margin: 0px; padding: 5px 15px 5px 5px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; background-color: rgb(213, 213, 213); text-align: left;">描述</th></tr><tr style="margin: 0px; padding: 0px; border: 0px;"><td style="margin: 0px; padding: 5px 15px 5px 5px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);"><a href="http://w3school.com.cn/tags/tag_div.asp" title="HTML &lt;div&gt; 标签" style="margin: 0px; padding: 0px; border: 0px; text-decoration: underline; color: rgb(144, 11, 9); background-color: transparent; background-position: initial initial; background-repeat: initial initial;" target="_blank">&lt;div&gt;</a></td><td style="margin: 0px; padding: 5px 15px 5px 5px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">定义文档中的分区或节（division/section）。</td></tr><tr style="margin: 0px; padding: 0px; border: 0px;"><td style="margin: 0px; padding: 5px 15px 5px 5px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);"><a href="http://w3school.com.cn/tags/tag_span.asp" title="HTML &lt;span&gt; 标签" style="margin: 0px; padding: 0px; border: 0px; text-decoration: underline; color: rgb(144, 11, 9); background-color: transparent; background-position: initial initial; background-repeat: initial initial;" target="_blank">&lt;span&gt;</a></td><td style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 5px; padding-right: 15px; padding-bottom: 5px; padding-left: 5px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: rgb(170, 170, 170); border-right-color: rgb(170, 170, 170); border-bottom-color: rgb(170, 170, 170); border-left-color: rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239); word-break: break-all; ">定义 span，用来组合文档中的行内元素。</td></tr></tbody></table></div></body></html>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/HTML/">HTML</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/HTML/">HTML</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac系统编译Qt的oracle驱动 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Mac系统编译Qt的oracle驱动"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:58.000Z"><a href="/2014/04/14/Mac系统编译Qt的oracle驱动/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">Mac系统编译Qt的oracle驱动</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>Mac系统编译Qt的oracle驱动</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div style="font-size: 12px; word-wrap: break-word; color: rgb(51, 51, 51); font-family: tahoma, 宋体; background-color: rgb(239, 239, 239); text-align: center;"><br><h1 style="font-size: 16px; padding-top: 10px;"><span style="font-size: 14px; line-height: 1.6;">今天编译在Mac下编译了</span><a href="http://www.linuxidc.com/topicnews.aspx?tid=12" target="_blank" title="Oracle" style="font-size: 14px; line-height: 1.6; color: rgb(179, 43, 213);">Oracle</a><span style="font-size: 14px; line-height: 1.6;">的SQL驱动插件，这里记录编译过程供参考。</span><br/></h1><br></div><br><div style="font-size: 12px; word-wrap: break-word; clear: both; padding: 0px; overflow: hidden; color: rgb(51, 51, 51); font-family: tahoma, 宋体; background-color: rgb(239, 239, 239);"><br><div style="word-wrap: break-word;"/><br><div style="word-wrap: break-word; text-align: center;"/><br></div><br><div style="font-size: 14px; word-wrap: break-word; font-family: tahoma, 宋体; line-height: 1.6; color: rgb(51, 51, 51); background-color: rgb(239, 239, 239); overflow-x: hidden; word-break: break-all;"><br><div style="word-wrap: break-word; float: right; padding-left: 10px; line-height: 1.6;"/><br><p>先介绍一下编译环境：Mac OS X 10.7.3, 安装Qt SDK 1.2 for Mac，XCode 4.2.1。</p><br><p>1. 首先是到Oracle的网站上下载相关的库和开发包，按照Qt文档中的说明（How to Build the OCI Plugin on Unix and Mac OS X），需要下载&quot;Instant Client Package - Basic&quot;和&quot;Instant Client Package - SDK&quot;两个包，可以从<a title="" href="http://www.oracle.com/technetwork/topics/intel-macsoft-096467.html" target="_blank" style="color: rgb(179, 43, 213);">这里</a>找到要下载的内容。</p><br><p>2. 把下载的zip文件解压到同一个目录下，如Oracle10gClient；</p><br><p>3. 编译。在qt的文档中有两种方法，一个是利用configure生成makefile在执行make，另一种是利用qmake生成makefile再生成。我这里用第一种方法没有成功（原因不详），这里说的是第二种方法：</p><br><p>1）进入Qt源码目录，~/QtSDK/QtSources/4.8.0/src/plugins/sqldrivers/oci</p><br><p>2)  执行qmake命令, 按照文档中的说明，执行</p><br><ol><br><li>qmake &quot;INCLUDEPATH+=[your_oracle_dir]/instantclient_10_2/sdk/include&quot; &quot;LIBS+=-L[your_oracle_dir]/instantclient_10_2 -Wl,-rpath,[your_oracle_dir]/instantclient_10_2&quot; -lclntsh -lnnz10&quot; <a href="http://oci.pro" target="_blank">oci.pro</a>  </li><br></ol><br><p>这里的[your_oracle_dir]需要替换为第2步创建的目录。然后再执行make生成库文件。</p><br><p>在执行时make发现无法找到&lt;QtSql/private/qsqlcachedresult_p.h&gt;这个文件，www.linuxidc.com而实际这个文件在目录中是有的，原因是默认执行qmake时只把二进制的include目录QtSDK/Desktop/Qt/4.8.0/gcc/include这个目录放在INCLUDEPATH中，而这个文件是在源代码目录下，所以会出现无法找到头文件的问题。解决办法是把源代码的include目录在qmake时直接添加进去，也就是执行如下的qmake命令：</p><br><ol><br><li>qmake &quot;INCLUDEPATH+=[your_oracle_dir]/instantclient_10_2/sdk/include ~/QtSDK/QtSources/4.8.0/include&quot; &quot;LIBS+=-L[your_oracle_dir]/instantclient_10_2 -Wl,-rpath,[your_oracle_dir]/instantclient_10_2&quot; -lclntsh -lnnz10&quot; <a href="http://oci.pro" target="_blank">oci.pro</a>  </li><br></ol><br><p>这样是可以编译成功的，但是在最后link时还有一个错误，无法找到库文件“library not found for -lclntsh”，查找了oracle的安装目录下，确实没有这个文件，但有一个libclntsh.dylib.10.1，猜测这个就是一个动态库，只是版本不同的问题。于是给这个文件做个符号链接，在[your_oracle_dir]目录下执行</p><br><p>ln -s libclntsh.dylib.10.1 libclntsh.dylib  </p><br><p>然后再回头去执行make命令，就可以创建成功了。创建后的文件在~/QtSDK/QtSources/4.8.0/src/plugins/sqldrivers/oci目录下，把它们复制到Qt的sqldrivers目录下就可以了。</p><br></div><br><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;">以上就是整个生成驱动插件的过程。</span><br><div><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br><div><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;"><span style="-evernote-last-insertion-point:true;"/>昨天在Mac下成功编译了MySql和Oracle的数据库插件驱动，但遗憾的是在程序中无论如何也加载不了这两个驱动，也无法连接数据库。在环境变量中设置QT_DEBUG_PLUGINS=1, 再启动程序后Qt会报告一些加载插件的调试信息，从中可以看出是插件不兼容引起的，也就是文档中所说的Build Key的问题，在文档中有提到可能需要清除插件缓存（Plugin cache），应该是在一个QSettings定义的文件中，但我没找到。无奈下将QtSDK删除重新安装一遍，又从头开始，最后终于成功。下面记录详细的过程，供日后参考。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">1. 首先安装QtSDK 1.2, 安装在 ~/QtSDK目录下，安装的时候要选择安装4.8.0的源代码，否则后面无法编译plugin；</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">2. 下载MySql和Oracle的数据库连接的动态库；可从官网下载，注意选择与你的系统合适的版本，我这里是Max OSX 10.7.3 64bit；MySql下载的是mysql-connector-c-6.0.2-osx10.5-x86-64bit.tar.gz， oracle下需要的是instantclient basic包和instantclient SDK包。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">3. 将下载的数据库文档解压缩到本地目录下，记录下文件目录；MySql解压在~/bin/mysql目录下，下面会有include和lib子目录；oracle的两个包解压到~/bin/oracle目录下，目录下有库文件和sdk目录；</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">4.准备工作完了后，开始编译生成Qt库；首先执行命令（后面3行是一个命令，因太长了分行显示）</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 916px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">&lt;span style=&quot;font-size:16px;&quot;&gt;cd ~/QtSDK/QtSources/4.8.0  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">./configure -opensource -prefix /Users/lutx/QtSDK/Desktop/Qt/4.8.0/gcc -plugin-sql-mysql -plugin-sql-oci  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"> -plugin-sql-odbc -plugin-sql-sqllite -I/Users/lutx/bin/mysql/include -I/Users/lutx/bin/oracle/sdk/include  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"> -L/Users/lutx/bin/mysql/lib -L/Users/lutx/bin/oracle&lt;/span&gt;  </span></li><br></ol><br></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">上面的命令中，prefix是定义编译后的安装目录，默认是安装到/usr/local/Trolltech/Qt-4.8.0目录下，我这里给定义安装到 QtSDK的目录下，这样可以避免后面在QtCreator中配置版本，或者利用install_name_tools来修改动态库名称等操作。经过一段 时间（几分钟）等待后，生成了整个源目录下的makefile文件。系统应该显示</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1190px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">Qt is now configured for building. Just run ‘make’.  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">Once everything is built, you must run ‘make install’.  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">Qt will be installed into /Users/[xxxx]/QtSDK/Desktop/Qt/4.8.0/gcc  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">To reconfigure, run ‘make confclean’ and ‘configure’.  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">上面的[xxxx]应该是你的系统登录用户名，下同。</span><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">5.下面开始编译过程，应该很简单，直接在刚才的目录下继续执行make命令即可，但是我这里在编译到QtWebkit这个库的时候会有错误，因此后面将跳过这个库继续编译后面的库。出现的错误是：<br/></span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1460px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">fileapi/FileReaderLoader.cpp: In member function ‘void WebCore::FileReaderLoader::convertToDataURL()’:  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">fileapi/FileReaderLoader.cpp:307: error: ‘base64Encode’ was not declared in this scope  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[3]: <strong><em> [.obj/debug-static/FileReaderLoader.o] Error 1  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[2]: </em></strong> [debug-all] Error 2  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make[1]: <strong><em> [sub-WebCore-make_default-ordered] Error 2  </span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make: </em></strong> [sub-webkit-make_default-ordered] Error 2  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">这里也不知道是么原因，没搞明白。</span><br><div><br style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><br/></div><br><div><br style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><br/></div><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"><span style="font-size: 16px;">5.通过Makefile文件知道，在Webkit后面还有scripttools,plugins(这个是主要���的), 后面用命令逐个编译每个库。</span></p><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div style="font-family: Consolas, 'Courier New', Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220); overflow: auto; padding-top: 1px; text-align: left; color: rgb(51, 51, 51); line-height: 26px;"><br><div style="padding-left: 45px;"><br><div style="padding: 3px 8px 10px 10px; font-size: 9px; line-height: normal; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: rgb(248, 248, 248); border-left-width: 3px; border-left-style: solid; border-left-color: rgb(108, 226, 108);"><b>[plain]</b> <a href="http://blog.csdn.net/lutx/article/details/7313797#" title="view plain" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">view plain</a><a href="http://blog.csdn.net/lutx/article/details/7313797#" title="copy" style="color: rgb(160, 160, 160); text-decoration: none; background-image: url(&quot;&quot;); background-color: inherit; border: none; padding: 1px; text-indent: -2000px; background-position: 0% 0%; background-repeat: no-repeat no-repeat;" target="_blank">copy</a><br><div style=" left: 611px; top: 1762px; z-index: 99;"/><br></div><br></div><br><ol start="1" style="padding: 0px; border: none; list-style-position: initial; list-style-image: initial; background-color: rgb(255, 255, 255); color: rgb(92, 92, 92);"><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; color: inherit; line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;"><span style="padding: 0px; border: none; background-color: inherit;">cd src/scripttools;make;cd ../plugins;make;cd ../imports;make;cd ../tools;make;cd ../translations;make;cd ../..  </span></span></li><br><li style="padding: 0px 3px 0px 10px !important; border-style: none none none solid; border-left-width: 3px; border-left-color: rgb(108, 226, 108); list-style: decimal-leading-zero outside; background-color: rgb(248, 248, 248); line-height: 18px;"><span style=" padding: 0px; border: none; color: black; background-color: inherit;">make install  </span></li><br></ol><br></div><br><span style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);">因为不是必需的，最后没有编译examples和demos两个目录。</span><br><p style="color: rgb(51, 51, 51); font-size: 13.63636302947998px; line-height: 26px; text-align: left; background-color: rgb(255, 255, 255);"/><br><div><span style="font-size: 16px; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); line-height: 26px; text-align: left;">如此编译已经成功，另外在程序运行时需要将mysql的lib目录和oracle的lib目录加到环境变量DYLD_LIBRARY_PATH中，否则还是无法加载数据库插件驱动。</span><span style="background-color: rgb(239, 239, 239); color: rgb(51, 51, 51); font-family: tahoma, 宋体; font-size: 14px; line-height: 1.6;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/SQL/">SQL</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SQL/">SQL</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

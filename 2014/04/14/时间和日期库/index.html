@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>时间和日期库 | QW&#39;s blog</title>
+  <meta name="author" content="Qiang Wei">
+  
+  <meta name="description" content="Until the end of the world">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="时间和日期库"/>
+  <meta property="og:site_name" content="QW&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="QW&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">QW&#39;s blog</a></h1>
+  <h2><a href="/">Until the end of the world</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">about</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-14T13:30:27.000Z"><a href="/2014/04/14/时间和日期库/">4月 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">时间和日期库</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><style type="text/css" id="wiz_custom_css"><br>body<br>{<br>    font-family: “Microsoft YaHei UI”,”Microsoft YaHei”,SimSun,”Segoe UI”,Tahoma,Helvetica,Sans-Serif,”Microsoft YaHei”, Georgia,Helvetica,Arial,sans-serif,宋体, PMingLiU,serif;<br>    font-size: 10.5pt;<br>    line-height: 1.5;<br>}<br>html, body<br>{</p>
+<p>}<br>h1 {<br>    font-size:1.5em;<br>    font-weight:bold;<br>}<br>h2 {<br>    font-size:1.4em;<br>    font-weight:bold;<br>}<br>h3 {<br>    font-size:1.3em;<br>    font-weight:bold;<br>}<br>h4 {<br>    font-size:1.2em;<br>    font-weight:bold;<br>}<br>h5 {<br>    font-size:1.1em;<br>    font-weight:bold;<br>}<br>h6 {<br>    font-size:1.0em;<br>    font-weight:bold;<br>}<br>img {<br>    border:0;<br>    max-width: 100%;<br>}<br>blockquote {<br>    margin-top:0px;<br>    margin-bottom:0px;<br>}<br>table {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br>td {<br>    border-collapse:collapse;<br>    border:1px solid #bbbbbb;<br>}<br></style></p>
+<HTML><HEAD><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=8" /><TITLE>时间和日期库</TITLE><br><!--defaultCSS--><br><style type="text/css"><br>img{<br>    border:0px;<br>    max-width:90%;<br>}<br></style><br><BODY><br><div><br><div><span style="font-size: 14px;">class timer{<span style="color: rgb(255, 39, 0);">&lt;boost/timer.hpp&gt; namespace boost;</span></span></div><br><div><span style="font-size: 14px;">     void restart();                                                                                                   //计时重新开始</span></div><br><div><span style="font-size: 14px;">     double elapser<em>max();                                                                                    //可度量的最大时间</span></div><br><div><span style="font-size: 14px;">     double elapser_min();                                                                                     //可度量的最小时间</span></div><br><div><span style="font-size: 14px;">     double elapsed();                                                                                            //从对象生成到流逝的时间</span></div><br><div><span style="font-size: 14px;">};</span><br><hr/></div><br><div><span style="font-size: 14px;">class date{</span><span style="color: rgb(255, 39, 0); font-size: 14px;">&lt;boost/date_time.hpp&gt; namespace boost:gregorian;</span><span style="font-size: 14px;">                        //</span><span style="font-size: 14px;">需加库libboost_date_time-mt.a或libboost_date_time-mt.so</span><span style="font-size: 14px;">                                                                                       </span><br/></div><br></div><br><div><span style="font-size: 14px;">     date(year_type year,month_type month,day_type day);                                //构造函数</span></div><br><div><span style="font-size: 14px;">     date(const date t);</span></div><br><div><span style="font-size: 14px;">     date(ymd_type &amp;);                                                                                          //date d(neg_infin / pos_infin / not_a_date_time / max_date_time / min_date_time);</span></div><br><div><span style="font-size: 14px;">     </span></div><br><div><span style="font-size: 14px;">     year_type year();                                                                                            //返回年月日</span></div><br><div><span style="font-size: 14px;">     month_type month();</span></div><br><div><span style="font-size: 14px;">     day_type day();</span></div><br><div><span style="font-size: 14px;">     day_of_week_type day_of_week();                                                                //返回day of 年月星期</span></div><br><div><span style="font-size: 14px;">     day_of_month_type day_of</em>();month</span></div><br><div><span style="font-size: 14px;">     day_of_year_type day_of_year();</span></div><br><div><span style="font-size: 14px;">                                                                               <br/></span></div><br><div><span style="font-size: 14px;">     bool is_special();                                                                                            //是否是任意一个特殊日期</span></div><br><div><span style="font-size: 14px;">     bool is_not_a_date();</span></div><br><div><span style="font-size: 14px;">     bool is_infinity();</span></div><br><div><span style="font-size: 14px;">     bool is_pos_infinity();</span></div><br><div><span style="font-size: 14px;">     bool is_neg_infinity();</span></div><br><div><span style="font-size: 14px;">     </span></div><br><div><span style="font-size: 14px;">     date_duration/bool operator+(const date_type &amp;);                                         //重载了 + - <em> / &gt;&gt; &lt;&lt; &lt; &gt; ==</span></div><br><div><span style="font-size: 14px;">          …</span></div><br><div><span style="font-size: 14px;">};</span></div><br><div><span style="font-size: 14px;">date day_clock::local_day();                                                                               //取得当前日期</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">string to_simple_string(date d);                                                                          //返回<b style="font-family: Menlo;">2014-Jan-30 </b></span></div><br><div><span style="font-size: 14px;">string to_iso_string(date d);                                                                                //返回<b style="font-family: Menlo;">20140130</b></span></div><br><div><span style="font-size: 14px;">string to_iso_extended_string(date d);                                                               //返回<b style="font-family: Menlo;">2014-01-30</b></span></div><br><div><b style="font-family: Menlo; font-size: 14px;"><br/></b></div><br><div><span style="font-size: 14px;">tm to_tm(date d);                                                                                               //date与tm结构的互换</span></div><br><div><span style="font-size: 14px;">date date_from_tm(tm t);                              </span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">日期长度类：days/weeks/months(date_duration);</span></div><br><div><span style="font-size: 14px;">日期迭代器：day_iterator/week_iterator/month_iterator</span></div><br><div><br><hr/><br><span style="font-size: 14px;">class date_period/time_period{</span><span style="color: rgb(255, 39, 0); font-size: 14px;">&lt;boost/date_time.hpp&gt; namespace boost:gregorian;</span></div><br><div><span style="font-size: 14px;">     date_period(date d1,date d2);                                                                      //构造函数</span></div><br><div><span style="font-size: 14px;">     date_period(date d,days/weeks/months t);</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     date begin();                                                                                                 //返回日期区间的开始端点</span></div><br><div><span style="font-size: 14px;">     date last();                                                                                                    //返回日期区间的结束端点</span></div><br><div><span style="font-size: 14px;">     date end();                                                                                                   //返回日期区间的结束端点+1</span></div><br><div><span style="font-size: 14px;">     days length();                                                                                               //返回日期区间的长度</span></div><br><div><span style="font-size: 14px;">     bool is_null();</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     void shift(days d);                                                                                        //平移</span></div><br><div><span style="font-size: 14px;">     void expand(days d);                                                                                   //扩展</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     bool contains(date&amp; d);                                                                               //是否包含</span></div><br><div><span style="font-size: 14px;">     bool contains(date_period&amp; d);     </span></div><br><div><span style="font-size: 14px;">     bool intersects(date_period&amp; d);                                                                 //是否存在交集</span></div><br><div><span style="font-size: 14px;">     bool is_adjacent(date_period&amp; d);                                                              //两个时间区间是否相邻</span></div><br><div><span style="font-size: 14px;">     bool is_before(date&amp; d);                                                                             //是否在区间之前</span></div><br><div><span style="font-size: 14px;">     bool is_after(date&amp; d);                                                                                //是否在区间之后</span></div><br><div><span style="font-size: 14px;">     </span></div><br><div><span style="font-size: 14px;">     period intersection(date_period&amp; d);                                                          //返回两个日期区间的交集</span></div><br><div><span style="font-size: 14px;">     period merge(date_period&amp; d);                                                                  //返回两个日期区间的并集(必须相邻或相交)</span></div><br><div><span style="font-size: 14px;">     period span(date_period&amp; d);                                                                     //合并两个日期区间及两者间的间隔</span></div><br><span style="font-size: 14px;"><br/></span><br><div><span style="font-size: 14px;">     bool operator ==/&lt;(date_period&amp; d);                                                           //重载<br/></span></div><br><div><span style="font-size: 14px;">};</span><br><hr/><br><span style="font-size: 14px;">class time_duration{<font color="#FF2900">&lt;</font><span style="font-family: Menlo;"><font color="#FF2900">b</font></span><span style="color: rgb(209, 47, 27); font-family: Menlo;">oost/date_time/posix_time/posix_time.hpp&gt; </span><span style="color: rgb(255, 39, 0);">namespace boost:posix_time;</span>                                                                                         </span></div><br><div><span style="font-size: 14px;">     time_duration();                                                                                           //构造函数</span></div><br><div><span style="font-size: 14px;">     time_duration(hour_type hour,month_type month,day_type day);</span></div><br><div><span style="font-size: 14px;">     time_duration(special_values);</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     hour_type hour();                                                                                         //返回时分秒总时间</span></div><br><div><span style="font-size: 14px;">     min_type minutes();</span></div><br><div><span style="font-size: 14px;">     sec_type seconds();</span></div><br><div><span style="font-size: 14px;">     sec_type total_seconds();</span></div><br><div><span style="font-size: 14px;">     tick_type total_milliseconds/total_nanoseconds/microseconds();</span></div><br><div><span style="font-size: 14px;">     </span></div><br><div><span style="font-size: 14px;">     duration_type invert_sign();                                                                         //转换正负号</span></div><br><div><span style="font-size: 14px;">     </span></div><br><div><span style="font-size: 14px;">     bool is_negative();                                                                                        //是否为负？</span></div><br><div><span style="font-size: 14px;">     bool is_special();</span></div><br><div><span style="font-size: 14px;">     bool is_not_a_date_time();</span></div><br><div><span style="font-size: 14px;">     bool is_pos_infinity();</span></div><br><div><span style="font-size: 14px;">     bool is_neg_infinity();</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     date_duration/bool operator+(const date_type &amp;);                                       <span style="-evernote-last-insertion-point:true;"/>//重载了 + - </em> / &gt;&gt; &lt;&lt; &lt; &gt; ==</span></div><br><div><span style="font-size: 14px;">          …</span><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">}</span></div><br><div><span style="font-size: 14px;">string to_simple_string(time_duration d);                                                          //返回<b style="font-family: Menlo;">20:07:21</b><b style="font-family: Menlo;"> </b></span></div><br><div><span style="font-size: 14px;">string to_iso_string(time_duration d);                                                                //返回<b style="font-family: Menlo;">200645</b><b style="font-family: Menlo;"> </b></span></div><br><div><br><hr/><br><span style="font-size: 14px;">class ptime{<font color="#FF2900">&lt;</font><span style="font-family: Menlo;"><font color="#FF2900">b</font></span><span style="color: rgb(209, 47, 27); font-family: Menlo;">oost/date_time/posix_time/posix_time.hpp&gt; </span><span style="color: rgb(255, 39, 0);">namespace boost:gregorian;</span><span style="color: rgb(255, 39, 0);">namespace boost:posix_time;</span><span style="color: rgb(255, 39, 0);"> </span><span style="color: rgb(255, 39, 0);"> </span><span style="color: rgb(255, 39, 0);"> </span></span></div><br><div><span style="font-size: 14px;">     ptime(date&amp; date,time_duration&amp; time);                                                       //构造函数</span></div><br><div><span style="font-size: 14px;">     ptime(special_values);</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     date_type date();                                                                                           //返回日期和时间</span></div><br><div><span style="font-size: 14px;">     time_duration_type time_of_day();</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     bool is_not_a_date_time();                                                                           </span></div><br><div><span style="font-size: 14px;">     bool is_pos_infinity();</span></div><br><div><span style="font-size: 14px;">     bool is_neg_infinity();<br/></span></div><br><div><span style="font-size: 14px;">     bool is_special();                                                                                            //是否是任意一个特殊日期</span></div><br><div><span style="font-size: 14px;">     bool is_infinity();<br/></span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">     date_duration/bool operator+(const date_type &amp;);                                         //重载了 + - * / &gt;&gt; &lt;&lt; &lt; &gt; ==</span></div><br><div><span style="font-size: 14px;">          …</span><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">}</span></div><br><div><span style="font-size: 14px;">ptime second_clock::local_time();                                                                       //返回当前日期秒精度，微秒精度</span></div><br><div><span style="font-size: 14px;">ptime micro_clock::universal_time();</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">string to_simple_string(</span><span style="font-size: 14px;">ptime</span><span style="font-size: 14px;"> d);                                                                         //返回</span><b style="font-size: 14px; font-family: Menlo;">2014-Jan-30 20:08:04</b><b style="font-size: 14px; font-family: Menlo;"> </b></div><br><div><span style="font-size: 14px;">string to_iso_string(</span><span style="font-size: 14px;">ptime</span><span style="font-size: 14px;"> d);                                                                               //返回</span><b style="font-size: 14px; font-family: Menlo;">20140130T200821</b><span style="font-size: 14px;"> </span></div><br><div><span style="font-size: 14px;">string to_iso_extended_string(</span><span style="font-size: 14px;">ptime</span><span style="font-size: 14px;"> d);                                                              //返回</span><b style="font-size: 14px; font-family: Menlo;">2014-01-30T20:08:37</b><span style="font-size: 14px;"> </span></div><br><div><span style="font-size: 14px;">tm to_tm(ptime t);                                                                                                //转换为tm结构</span></div><br><div><span style="font-size: 14px;">ptime from_time_t(time_t&amp; t);                                                                              //time_t转换为ptime</span></div><br><div><span style="font-size: 14px;">ptime ptime_from_tm(tm&amp; t);                                                                               //tm转换为ptime</span></div><br><div><span style="font-size: 14px;"><br/></span></div><br><div><span style="font-size: 14px;">time_iterator(ptime t,minutes n);                                                                          //时间迭代器</span><br><hr/><br>时间库chrono C++11</div><br><pre style="padding: 0px; border: 0px none white; background-color: rgb(249, 249, 249); line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; font-size: 1em; background-image: none; vertical-align: top; text-align: left;"><br><span style="color: rgb(51, 153, 0);">#include &lt;iostream&gt;</span><br><span style="color: rgb(51, 153, 0);">#include &lt;iomanip&gt;</span><br><span style="color: rgb(51, 153, 0);">#include &lt;ctime&gt;</span><br><span style="color: rgb(51, 153, 0);">#include &lt;chrono&gt;</span><br><br><span style="color: rgb(0, 0, 255);">int</span> main<span style="color: rgb(0, 128, 0);">(</span><span style="color: rgb(0, 128, 0);">)</span><br><span style="color: rgb(0, 128, 0);">{</span><br>    std<span style="color: rgb(0, 128, 128);">::</span>chrono<span style="color: rgb(0, 128, 128);">::</span>time_point<span style="color: rgb(0, 0, 128);">&lt;</span><a href="http://zh.cppreference.com/w/cpp/chrono/system_clock" style="text-decoration: none; color: rgb(0, 48, 128); background-image: none; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono<span style="color: rgb(0, 128, 128);">::</span>system_clock</a><span style="color: rgb(0, 0, 128);">&gt;</span> now<span style="color: rgb(0, 128, 128);">;     //本地时间</span><br>    now <span style="color: rgb(0, 0, 128);">=</span> std<span style="color: rgb(0, 128, 128);">::</span>chrono<span style="color: rgb(0, 128, 128);">::</span>system_clock<span style="color: rgb(0, 128, 128);">::</span>now<span style="color: rgb(0, 128, 0);">(</span><span style="color: rgb(0, 128, 0);">)</span><span style="color: rgb(0, 128, 128);">;</span><br></pre><br><pre style="padding: 0px; border: 0px none white; background-color: rgb(249, 249, 249); line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; font-size: 1em; background-image: none; vertical-align: top; text-align: left;"><br><span style="font-size: 14px; font-family: Menlo; color: rgb(187, 44, 162);">     auto</span><span style="font-size: 14px; font-family: Menlo;"> cl=</span><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">hours</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">3</span><span style="font-size: 14px; font-family: Menlo;">)+</span><span style="font-size: 14px; font-family: Menlo; color: rgb(112, 61, 170);">minutes</span><span style="font-size: 14px; font-family: Menlo;">(</span><span style="font-size: 14px; font-family: Menlo; color: rgb(39, 42, 216);">2</span><span style="font-size: 14px; font-family: Menlo;">);                              //时间间隔</span><span style="color: rgb(0, 128, 128);"><br/></span><br></pre><br><pre style="padding: 0px; border: 0px none white; background-color: rgb(249, 249, 249); line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; font-size: 1em; background-image: none; vertical-align: top; text-align: left;"><br><span style="color: rgb(0, 128, 0); font-size: 1em; line-height: 1.2em;">}</span><br></pre><br><ul style="line-height: 1.5em; list-style-type: square; padding: 0px; list-style-image: url(data:image/png; color: rgb(0, 0, 0); font-family: DejaVuSans, 'DejaVu Sans', arial, sans-serif; font-size: 12.727272033691406px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(250, 250, 250);"><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::hours</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::minutes</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::seconds</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::duration</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/time_point" title="cpp/chrono/time point" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::time_point</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::nanoseconds</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::microseconds</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/duration" title="cpp/chrono/duration" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::milliseconds</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/steady_clock" title="cpp/chrono/steady clock" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::steady_clock</a></li><br><li style=" line-height: 1.1em; padding-bottom: 0.4em; list-style: none none; font-size: 1em;"><a href="http://zh.cppreference.com/w/cpp/chrono/system_clock" title="cpp/chrono/system clock" style="text-decoration: none; color: rgb(11, 0, 128); background-image: none; font-size: 13.63636302947998px; background-position: initial initial; background-repeat: initial initial;" target="_blank">std::chrono::system_clock</a></li><br></ul><br><pre style="padding: 0px; border: 0px none white; background-color: rgb(249, 249, 249); line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; font-size: 1em; background-image: none; vertical-align: top; text-align: left;"><br></pre><br><pre style="font-size: 1em; padding: 0px; border: 0px none white; line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; background-image: none; vertical-align: top;"><br><span style="font-size: 1em; line-height: 1.2em;">system_clock</span><span style="font-size: 1em; line-height: 1.2em; color: rgb(0, 128, 128);">::</span><span style="font-size: 1em; line-height: 1.2em;">to_time_t</span><span style="color: rgb(0, 128, 0); font-size: 1em; line-height: 1.2em;"><br/></span><br></pre><br><pre style="font-size: 1em; padding: 0px; border: 0px none white; line-height: 1.2em; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; overflow: auto; background-image: none; vertical-align: top;"><br><span style="font-size: 1em; line-height: 1.2em;">system_clock</span><span style="font-size: 1em; line-height: 1.2em; color: rgb(0, 128, 128);">::</span><span style="font-size: 1em; line-height: 1.2em;">from_time_t</span><span style="color: rgb(0, 128, 0); font-size: 1em; line-height: 1.2em;"><br/></span><br></pre><br><div><span style="font-size: 1em; line-height: 1.2em;"><br/></span></div><br></BODY><br></HTML>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/boost/">boost</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/boost/">boost</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"qiangwei199212"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/categories/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/categories/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/categories/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/categories/python/">python</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/C++11/">C++11</a><small>14</small></li>
+  
+    <li><a href="/tags/HTML/">HTML</a><small>14</small></li>
+  
+    <li><a href="/tags/SQL/">SQL</a><small>11</small></li>
+  
+    <li><a href="/tags/boost/">boost</a><small>9</small></li>
+  
+    <li><a href="/tags/python/">python</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Qiang Wei
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
